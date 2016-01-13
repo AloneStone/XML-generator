@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Vehicule>
+  <!--Premier vehicule-->
+  <Vehicule id="1">
+    <lenth>5</lenth>
+    <maxSpeed>100</maxSpeed>
+    <brakingDistance>10</brakingDistance>
+    <startingPositionX>90</startingPositionX>
+    <startingPositionY>90</startingPositionY>
+    <endingPositionX>100</endingPositionX>
+    <endingPositionY>100</endingPositionY>
+    <driver>driver</driver>
+    <width>5</width>
+  </Vehicule>
+  <!--Premier vehicule-->
+  <Vehicule id="2">
+    <lenth>10</lenth>
+    <maxSpeed>645</maxSpeed>
+    <brakingDistance>12</brakingDistance>
+    <startingPositionX>50</startingPositionX>
+    <startingPositionY>50</startingPositionY>
+    <endingPositionX>60</endingPositionX>
+    <endingPositionY>60</endingPositionY>
+    <driver>driver</driver>
+    <width>10</width>
+  </Vehicule>
+</Vehicule>
