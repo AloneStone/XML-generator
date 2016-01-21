@@ -21,6 +21,8 @@ public abstract class Signaling {
 	}
 
 	abstract String getType();
+	abstract Integer getRedDuration() ;
+	abstract Integer getGreenDuration();
 
 	public Integer getId() {
 		return id;
@@ -33,4 +35,6 @@ public abstract class Signaling {
 	public Collection<Integer> getIdSignalingPosible() {
 		return idSignalingPosible;
 	}
+	
+
 }

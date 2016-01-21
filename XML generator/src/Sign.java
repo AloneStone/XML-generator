@@ -18,4 +18,16 @@ public class Sign extends Signaling{
 		return "Sign";
 	}
 
+	@Override
+	Integer getRedDuration() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	Integer getGreenDuration() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

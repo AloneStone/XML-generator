@@ -18,4 +18,16 @@ public class Crossroad extends Signaling{
 		return "Crossroad";
 	}
 
+	@Override
+	Integer getRedDuration() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	Integer getGreenDuration() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -30,6 +30,8 @@
     <positionX>1</positionX>
     <positionY>1</positionY>
     <idSignalingPosible>[2, 3]</idSignalingPosible>
+    <redDuration>10</redDuration>
+    <greenDuration>5</greenDuration>
   </TrafficLight>
   <Sign>
     <id>1</id>

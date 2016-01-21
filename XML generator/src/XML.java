@@ -136,21 +136,37 @@ public class XML {
 	        	
 	        	final Element id = document.createElement("id");
 	        	id.appendChild(document.createTextNode(si.getId().toString()));	
+	        	signa.appendChild(id);
 	        	
 	        	final Element positionX = document.createElement("positionX");
 	        	positionX.appendChild(document.createTextNode(si.getPosition().getX().toString()));	
-		    
+	        	signa.appendChild(positionX);
+	        	
 	        	final Element positionY = document.createElement("positionY");
 	        	positionY.appendChild(document.createTextNode(si.getPosition().getY().toString()));	
-		    
+	        	signa.appendChild(positionY); 
+	        	
 	        	final Element idSignalingPosible = document.createElement("idSignalingPosible");
 	        	idSignalingPosible.appendChild(document.createTextNode(si.getIdSignalingPosible().toString()));	
-		    
+	        	signa.appendChild(idSignalingPosible);
 	        	
-		        signa.appendChild(id);
-		        signa.appendChild(positionX);           
-		        signa.appendChild(positionY); 
-		        signa.appendChild(idSignalingPosible); 
+	        	if(si.getType() == "TrafficLight"){
+	        		
+		        	final Element redDuration = document.createElement("redDuration");
+		        	redDuration.appendChild(document.createTextNode(si.getRedDuration().toString()));	
+		        	signa.appendChild(redDuration); 
+		        	
+		        	final Element greenDuration = document.createElement("greenDuration");
+		        	greenDuration.appendChild(document.createTextNode(si.getGreenDuration().toString()));	
+		        	signa.appendChild(greenDuration); 
+	        		
+	        	}
+	        	
+	        	
+		        
+		                   
+		        
+		         
 
 	        }
 	        /*
