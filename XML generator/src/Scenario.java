@@ -11,8 +11,9 @@ public class Scenario {
 	public Environement environement;
 	public Collection<Vehicule> vehicules;
 	
-	public Scenario(Collection<Vehicule> v){
+	public Scenario(Collection<Vehicule> v, Environement e){
 		this.vehicules = v;
+		this.environement = e;
 	}
 	
 	public Environement getEnvironement() {

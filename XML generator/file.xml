@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Vehicule>
-  <!--Premier vehicule-->
-  <Vehicule id="1">
+<Scenario>
+  <Car id="1">
     <lenth>5</lenth>
     <maxSpeed>100</maxSpeed>
     <brakingDistance>10</brakingDistance>
@@ -11,9 +10,8 @@
     <endingPositionY>100</endingPositionY>
     <driver>driver</driver>
     <width>5</width>
-  </Vehicule>
-  <!--Premier vehicule-->
-  <Vehicule id="2">
+  </Car>
+  <Moto id="2">
     <lenth>10</lenth>
     <maxSpeed>645</maxSpeed>
     <brakingDistance>12</brakingDistance>
@@ -23,5 +21,26 @@
     <endingPositionY>60</endingPositionY>
     <driver>driver</driver>
     <width>10</width>
-  </Vehicule>
-</Vehicule>
+  </Moto>
+  <Picture>
+    <file>./img/picture</file>
+  </Picture>
+  <TrafficLight>
+    <id>1</id>
+    <positionX>1</positionX>
+    <positionY>1</positionY>
+    <idSignalingPosible>[2, 3]</idSignalingPosible>
+  </TrafficLight>
+  <Sign>
+    <id>1</id>
+    <positionX>10</positionX>
+    <positionY>2</positionY>
+    <idSignalingPosible>[1, 3]</idSignalingPosible>
+  </Sign>
+  <Crossroad>
+    <id>1</id>
+    <positionX>16</positionX>
+    <positionY>5</positionY>
+    <idSignalingPosible>[1, 2]</idSignalingPosible>
+  </Crossroad>
+</Scenario>

@@ -5,7 +5,6 @@
  */
 public abstract class Vehicule {
 	
-	
 	public Integer lenth;
 	public Integer maxSpeed;
 	public Integer brakingDistance;
@@ -13,6 +12,10 @@ public abstract class Vehicule {
 	public Position endingPosition;
 	public Driver driver;
 	public Integer width;
+	
+	
+	
+	abstract String getType();
 	
 	
 	

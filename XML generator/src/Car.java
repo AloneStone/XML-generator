@@ -18,4 +18,10 @@ public class Car extends Vehicule{
 		this.width = CAR_WIDTH;
 		
 	}
+
+	@Override
+	String getType() {
+		
+		return "Car";
+	}
 }

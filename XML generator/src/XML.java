@@ -29,9 +29,7 @@ public class XML {
 		
 		
 		  /*
-
 	     * Etape 1 : récupération d'une instance de la classe "DocumentBuilderFactory"
-
 	     */
 
 	    final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -39,54 +37,44 @@ public class XML {
 	    try {
 
 	        /*
-
 	         * Etape 2 : création d'un parseur
-
 	         */
 
 	        final DocumentBuilder builder = factory.newDocumentBuilder();
-
-	                
-
 	        /*
-
 	         * Etape 3 : création d'un Document
-
 	         */
 
 	        final Document document= builder.newDocument();
-
-	                    
-
 	        /*
-
 	         * Etape 4 : création de l'Element racine
-
 	         */
 
-	        final Element racine = document.createElement("Vehicule");
+	        Collection<Vehicule> vehicule = s.getVehicules();
+	        
+	        Environement e = s.getEnvironement();
+	        Collection<Signaling> signaling = e.getSignaling();
+	        /**
+	         * Partie Véhicule
+	         */
+	        
+	        final Element racine = document.createElement("Scenario");
 	        document.appendChild(racine);           
 	        /*
 	         * Etape 5 : création d'une personne
 	         */
 
-	        Collection<Vehicule> vehicule = s.getVehicules();
+
 	        int compteurId = 1;	
 	        for (Vehicule v: vehicule){
 		        
-	        	
-		        final Comment commentaire = document.createComment("Premier vehicule");
-		        racine.appendChild(commentaire);
+
 	
-		        final Element vehi = document.createElement("Vehicule");
+		        final Element vehi = document.createElement(v.getType());
 	
 		        vehi.setAttribute("id", Integer.toString(compteurId));
 		        racine.appendChild(vehi);
-		        /*
-	
-		         * Etape 6 : création du nom et du prénom
-	
-		         */
+
 	
 		        final Element lenth = document.createElement("lenth");
 		        lenth.appendChild(document.createTextNode(v.getLenth().toString()));
@@ -128,10 +116,45 @@ public class XML {
 		        compteurId++;
 	        }                       
 
+	        /** 
+	         * Partie environement
+	         */
+	        
+
+	        final Element pic = document.createElement("Picture");
+	        racine.appendChild(pic);
+	        
+	        final Element picture = document.createElement("file");
+	        picture.appendChild(document.createTextNode("./img/picture"));
+	        pic.appendChild(picture);
+	         
+	        
+	        for (Signaling si: signaling){
+	        	
+	        	final Element signa = document.createElement(si.getType());
+	        	racine.appendChild(signa);
+	        	
+	        	final Element id = document.createElement("id");
+	        	id.appendChild(document.createTextNode(si.getId().toString()));	
+	        	
+	        	final Element positionX = document.createElement("positionX");
+	        	positionX.appendChild(document.createTextNode(si.getPosition().getX().toString()));	
+		    
+	        	final Element positionY = document.createElement("positionY");
+	        	positionY.appendChild(document.createTextNode(si.getPosition().getY().toString()));	
+		    
+	        	final Element idSignalingPosible = document.createElement("idSignalingPosible");
+	        	idSignalingPosible.appendChild(document.createTextNode(si.getIdSignalingPosible().toString()));	
+		    
+	        	
+		        signa.appendChild(id);
+		        signa.appendChild(positionX);           
+		        signa.appendChild(positionY); 
+		        signa.appendChild(idSignalingPosible); 
+
+	        }
 	        /*
-
-	         * Etape 8 : affichage
-
+	         * affichage
 	         */
 
 	        final TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -143,8 +166,6 @@ public class XML {
 	        final StreamResult sortie = new StreamResult(new File("file.xml"));
 
 	        //final StreamResult result = new StreamResult(System.out);
-
-	            
 
 	        //prologue
 

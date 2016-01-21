@@ -27,5 +27,13 @@ public class Moto extends Vehicule {
 		this.driver = d;
 		this.width = TRUCK_LENTH;
 	}
+
+	@Override
+	String getType() {
+		
+		return "Moto";
+	}
+	
+	
 	
 }
