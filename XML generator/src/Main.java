@@ -44,5 +44,7 @@ public class Main {
     	xml.toXML(s);
     	
     	System.out.println("Fichier créé !");
+    	
+    	Display XMLGenerator = new Display(); 
     }
 }
