@@ -1,6 +1,11 @@
-import java.util.Collection;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Collection;
+
+import javax.swing.SwingUtilities;
+
+import xmlGenerator.XmlGenerator;
+import xmlGenerator.GUI.GUIXmlGenerator;
+ 
 
 /**
  * 
@@ -44,7 +49,15 @@ public class Main {
     	xml.toXML(s);
     	
     	System.out.println("Fichier créé !");
+    	XmlGenerator photop = new XmlGenerator();
+		GUIXmlGenerator guiPhotop = new GUIXmlGenerator(photop);	
+		photop.GUIAssociation(guiPhotop);
+		SwingUtilities.invokeLater(guiPhotop);
+
+    	System.out.println("test");
     	
-    	Display XMLGenerator = new Display(); 
+    	
+
+    	
     }
 }
