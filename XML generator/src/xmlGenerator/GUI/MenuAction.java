@@ -1,6 +1,6 @@
 package xmlGenerator.GUI; 
 
-import java.awt.AWTException;
+import java.awt.AWTException; 
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Robot;
@@ -18,7 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import xmlGenerator.TypeShape;
-
+ 
 public class MenuAction
 {
 	
@@ -292,7 +292,7 @@ public class MenuAction
 	}
 	
 
-	public static ActionListener photop(final MenuBar menuBar)
+	public static ActionListener ActionListener (final MenuBar menuBar)
 	{
 		return new ActionListener()
 		{
@@ -306,73 +306,9 @@ public class MenuAction
 	
 
 	
-	/**
-	 * Increases the Poinster's size
-	 * @param menuBar menuBar
-	 * @return ActionListener ActionListener
-	 */
-	public static ActionListener increaseSize(final MenuBar menuBar)
-	{
-		return new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				menuBar.getDrawPanel().setPointerSize(10);
-			}
-		};
+
+	
+
 	}
-	
-	
-	/**
-	 * Decreases the Poinster's size
-	 * @param menuBar menuBar
-	 * @return ActionListener ActionListener
-	 */
-	public static ActionListener decreaseSize(final MenuBar menuBar)
-	{
-		return new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				menuBar.getDrawPanel().setPointerSize(-10);
-			}
-		};
-	}
-	
-	
-	/**
-	 * Opens a window about us
-	 * @return ActionListener ActionListener
-	 */
-	public static ActionListener aboutUs()
-	{
-		return new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				JOptionPane.showMessageDialog(null, "Creators : \n Mathie BERTHOLET - M�dy KHEBIBECHE - Jean-Baptiste MERCIER - Bastien PLANEILLE - Corentin VALLIER");				
-			}
-		};
-	}
-	
-	
-	/**
-	 * Opens a window about photop
-	 * @return ActionListener ActionListener
-	 */
-	public static ActionListener aboutPhotop()
-	{
-		return new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				JOptionPane.showMessageDialog(null, "Welcome on Photop !");				
-			}
-		};
-	}
-}
+
 
