@@ -1,7 +1,6 @@
 package xmlGenerator.GUI; 
 
 import java.awt.AWTException;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Robot;
@@ -10,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
@@ -272,11 +273,20 @@ public class MenuAction
 	{
 		return new ActionListener()
 		{
-			@Override
-			public void actionPerformed(ActionEvent e)
+			public void actionPerformed(ActionEvent e, xmlGenerator.GUI.Vehicule v)
 			{
 				menuBar.getDrawPanel().setPointerType(TypeShape.CAR);
-					//System.out.println("test2");
+				System.out.println("vehicule créé");
+				Collection<Vehicule> vehicule = new ArrayList<Vehicule>();
+				Vehicule v1 = new Car(100, 10,new Position(90,90), new Position(100,100)  , new Driver(),10);
+				vehicule.add(v1);
+		    	
+			}
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
 			}
 		};
 	}

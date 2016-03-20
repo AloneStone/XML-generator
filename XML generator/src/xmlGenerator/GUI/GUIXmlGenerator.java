@@ -50,11 +50,7 @@ public class GUIXmlGenerator implements Runnable
 		this.window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		this.window.setLocationRelativeTo(null);
 		
-		/**
-		 * reaching the icon through the path of the package
-		 */
-		//ImageIcon icon = new ImageIcon(getClass().getResource("/fr/iutvalence/info/projet/s2/g17/photop/GUI/123.png"));
-		//this.window.setIconImage(icon.getImage());
+		
 		this.window.setTitle("XML-Generator");
 	
 		this.drawPanel = new DrawPanel(null);

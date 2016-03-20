@@ -28,23 +28,7 @@ public class Shape extends Object
 		this.type = point.getType();
 	}
 	
-	/**
-	 * gets the color of the shape
-	 * @return color
-	 */
-	public Color getColor() 
-	{
-		return color;
-	}
-	
-	/**
-	 * sets a new color to the shape
-	 * @param color color
-	 */
-	public void setColor(Color color) 
-	{
-		this.color = color;
-	}
+
 	
 	/**
 	 * Gets the type of the shape

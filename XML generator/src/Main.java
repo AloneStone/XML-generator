@@ -49,12 +49,12 @@ public class Main {
     	xml.toXML(s);
     	
     	System.out.println("Fichier créé !");
-    	XmlGenerator photop = new XmlGenerator();
-		GUIXmlGenerator guiPhotop = new GUIXmlGenerator(photop);	
-		photop.GUIAssociation(guiPhotop);
-		SwingUtilities.invokeLater(guiPhotop);
+    	XmlGenerator xmlgenerator = new XmlGenerator();
+		GUIXmlGenerator guiXmlGenerator = new GUIXmlGenerator(xmlgenerator);	
+		xmlgenerator.GUIAssociation(guiXmlGenerator);
+		SwingUtilities.invokeLater(guiXmlGenerator);
 
-    	System.out.println("test");
+    	//System.out.println("test");
     	
     	
 
