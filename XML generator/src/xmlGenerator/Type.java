@@ -1,6 +1,6 @@
 package xmlGenerator;
 
-public enum TypeShape
+public enum Type
 {
 	CAR, 
 	TRUCK;

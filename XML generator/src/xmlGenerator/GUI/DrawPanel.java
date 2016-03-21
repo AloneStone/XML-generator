@@ -11,9 +11,12 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import Main.Car;
+import Main.Driver;
+import Main.Position;
 import xmlGenerator.Pointer;
 import xmlGenerator.Shape;
-import xmlGenerator.TypeShape;
+import xmlGenerator.Type;
 public class DrawPanel extends JPanel
 {
 	/**
@@ -75,14 +78,14 @@ public class DrawPanel extends JPanel
 		for(Shape shape : this.points)
 		{
 			//g.setColor(photopShape.getColor());
-			if(shape.getType().equals(TypeShape.CAR))
+			if(shape.getType().equals(Type.CAR))
 			{
 				Image img = getToolkit().getImage(getClass().getResource("/xmlGenerator/GUI/car.png"));
 				ImageObserver observer = null;
 				g.drawImage(img , shape.getPosX(), shape.getPosY(), observer);;	
 				System.out.println("test");
 			}	
-			else if(shape.getType().equals(TypeShape.TRUCK))
+			else if(shape.getType().equals(Type.TRUCK))
 			{
 				Image img = getToolkit().getImage(getClass().getResource("/xmlGenerator/GUI/car.png"));
 				ImageObserver observer = null;
@@ -118,7 +121,7 @@ public class DrawPanel extends JPanel
 	 * Sets the pointer's type with a given type
 	 * @param type type
 	 */
-	public void setPointerType(TypeShape type)
+	public void setPointerType(Type type)
 	{
 		this.point.setShape(type);
 	

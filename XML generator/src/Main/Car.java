@@ -1,6 +1,9 @@
-package xmlGenerator.GUI;
-
-
+package Main;
+/**
+ * 
+ * @author Bastien26
+ *
+ */
 public class Car extends Vehicule{
 
 	public final static int CAR_LENTH = 5;

@@ -8,7 +8,7 @@ public class Pointer
 	/**
 	 * the pointer's type
 	 */
-	private TypeShape type;
+	private Type type;
 	
 	/**
 	 * The pointer's size
@@ -22,7 +22,7 @@ public class Pointer
 	public Pointer()
 	{
 		
-		this.type = TypeShape.CAR;
+		this.type = Type.CAR;
 		this.size = 100;
 	}
 	
@@ -32,7 +32,7 @@ public class Pointer
 	 * @param shap the given type
 	 * @param siz the given size
 	 */
-	public Pointer(Color col, TypeShape shap, int siz)
+	public Pointer(Color col, Type shap, int siz)
 	{
 		
 		this.type = shap;
@@ -45,7 +45,7 @@ public class Pointer
 	 * Sets the pointer's type with a given TypeShape
 	 * @param shape shape
 	 */
-	public void setShape(TypeShape shape)
+	public void setShape(Type shape)
 	{
 		this.type = shape;
 	}
@@ -65,7 +65,7 @@ public class Pointer
 	 * Returns the pointer's type
 	 * @return type the pointer's type
 	 */
-	public TypeShape getType()
+	public Type getType()
 	{
 		return type;
 	}

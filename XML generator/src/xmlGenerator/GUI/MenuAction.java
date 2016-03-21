@@ -17,7 +17,11 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import xmlGenerator.TypeShape;
+import Main.Car;
+import Main.Driver;
+import Main.Position;
+import Main.Vehicule;
+import xmlGenerator.Type;
  
 public class MenuAction
 {
@@ -269,13 +273,13 @@ public class MenuAction
 	
 	
 
-	public static ActionListener heart(final MenuBar menuBar)
+	public static ActionListener car(final MenuBar menuBar)
 	{
 		return new ActionListener()
 		{
-			public void actionPerformed(ActionEvent e, xmlGenerator.GUI.Vehicule v)
+			public void actionPerformed(ActionEvent e, Vehicule v)
 			{
-				menuBar.getDrawPanel().setPointerType(TypeShape.CAR);
+				menuBar.getDrawPanel().setPointerType(Type.CAR);
 				System.out.println("vehicule créé");
 				Collection<Vehicule> vehicule = new ArrayList<Vehicule>();
 				Vehicule v1 = new Car(100, 10,new Position(90,90), new Position(100,100)  , new Driver(),10);
@@ -284,27 +288,28 @@ public class MenuAction
 			}
 
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
 			}
 		};
+		
 	}
-	
 
-	public static ActionListener ActionListener (final MenuBar menuBar)
-	{
+
+	public static ActionListener truck(MenuBar menuBar) {
 		return new ActionListener()
 		{
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				menuBar.getDrawPanel().setPointerType(TypeShape.TRUCK);				
+				menuBar.getDrawPanel().setPointerType(Type.TRUCK);				
 			}
 		};
 	}
 	
 
+	
 	
 
 	

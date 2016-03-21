@@ -142,9 +142,9 @@ public class MenuBar extends JMenuBar
 		
 
 		
-		car.addActionListener(MenuAction.heart(this));
+		car.addActionListener(MenuAction.car(this));
 		
-		truck.addActionListener(MenuAction.photop(this));
+		truck.addActionListener(MenuAction.truck(this));
 		
 		
 		

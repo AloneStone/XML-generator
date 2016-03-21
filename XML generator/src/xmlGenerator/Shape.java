@@ -12,7 +12,7 @@ public class Shape extends Object
 	/**
 	 * The type of shape
 	 */
-	private TypeShape type;
+	private Type type;
 	
 	/**
 	 * The constructor of the shape
@@ -34,7 +34,7 @@ public class Shape extends Object
 	 * Gets the type of the shape
 	 * @return type type
 	 */
-	public TypeShape getType() 
+	public Type getType() 
 	{
 		return this.type;
 	}
@@ -43,7 +43,7 @@ public class Shape extends Object
 	 * Sets a new type to the shape
 	 * @param type type
 	 */
-	public void setType(TypeShape type) 
+	public void setType(Type type) 
 	{
 		this.type = type;
 	}
