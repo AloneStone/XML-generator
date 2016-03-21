@@ -105,25 +105,6 @@ public class MenuAction
 	}
 	
 	
-	/**
-	 * Quits the application
-	 * @param menuBar menubar
-	 * @return actionListener
-	 */
-	public static ActionListener quit(final MenuBar menuBar)
-	{
-		return new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				if (JOptionPane.showConfirmDialog(null, "Do you really want to quit Photop ?", "Confirmation", JOptionPane.OK_CANCEL_OPTION,
-						JOptionPane.QUESTION_MESSAGE) == JOptionPane.OK_OPTION)
-					System.exit(0);				
-			}
-		};
-	}
-	
 	
 	/**
 	 * Saves the image and all the pointers contained in the drawpanel
@@ -280,11 +261,7 @@ public class MenuAction
 			public void actionPerformed(ActionEvent e, Vehicule v)
 			{
 				menuBar.getDrawPanel().setPointerType(Type.CAR);
-				System.out.println("vehicule créé");
-				Collection<Vehicule> vehicule = new ArrayList<Vehicule>();
-				Vehicule v1 = new Car(100, 10,new Position(90,90), new Position(100,100)  , new Driver(),10);
-				vehicule.add(v1);
-		    	
+				
 			}
 
 			@Override

@@ -132,7 +132,6 @@ public class MenuBar extends JMenuBar
 		
 		eraseAll.addActionListener(MenuAction.eraseAll(this));
 		
-		quit.addActionListener(MenuAction.quit(this));
 		
 		saveImage.addActionListener(MenuAction.saveImage(this));
 		

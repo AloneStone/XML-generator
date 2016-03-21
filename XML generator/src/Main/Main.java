@@ -41,8 +41,9 @@ public class Main {
     	signaling.add(new Sign(1, new Position(10,2),idSignalingPosible2 ));
     	signaling.add(new Crossroad(1, new Position(16,5),idSignalingPosible3 ));
     	
-    	
-		Environement e = new Environement("./img/picture.png",signaling);
+    	ArrayList<Node> n = new ArrayList<Node>();        
+    	ArrayList<Arc> a = new ArrayList<Arc>();
+		Environement e = new Environement("./img/picture.png",signaling, n, a);
     	
     	Scenario s = new Scenario(vehicule,e);
     	

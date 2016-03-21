@@ -1,35 +1,29 @@
 package Main;
 
 public class Node {
-	
-public int positionX;
-public int positionY;
-  
+	public int id;
+	public Position position;  
 
-public Node(int x, int y){
-	
-	this.positionX = x;
-	this.positionY = y;
-	
+	public Node(int i, Position position) {
+		this.position = position;
+		this.id = i;
 }
 
+	public int getId() {
+		return id;
+	}
 
-public int getPositionX() {
-	return positionX;
-}
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Position getPosition() {
+		return position;
+	}
+
+	public void setPosition(Position position) {
+		this.position = position;
+	}
 
 
-public void setPositionX(int positionX) {
-	this.positionX = positionX;
-}
-
-
-public int getPositionY() {
-	return positionY;
-}
-
-
-public void setPositionY(int positionY) {
-	this.positionY = positionY;
-}
 }
