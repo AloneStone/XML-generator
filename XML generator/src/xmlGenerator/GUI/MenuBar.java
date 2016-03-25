@@ -41,6 +41,8 @@ public class MenuBar extends JMenuBar
 	 */
 	private JMenuItem quit;
 	
+	private JMenuItem generer;
+	
 	/**
 	 * The tab edition
 	 */
@@ -58,6 +60,8 @@ public class MenuBar extends JMenuBar
 	 * The type 
 	 */
 	private JMenu typeVehicule;
+	
+	private JMenu generation;
 	/**
 	 * The menu item "Car"
 	 */
@@ -113,6 +117,9 @@ public class MenuBar extends JMenuBar
 		
 	
 		
+		this.generation = new JMenu("Generation XML");
+		this.generer = new JMenuItem("générer");
+		
 		
 		this.typeVehicule = new JMenu("choisir véhicule");
 		this.car = new JMenuItem("Car");
@@ -145,6 +152,8 @@ public class MenuBar extends JMenuBar
 		
 		truck.addActionListener(MenuAction.truck(this));
 		
+		generer.addActionListener(MenuAction.generer(this));
+		//generation.add(generer);
 		
 		
 		file.add(openImage);
@@ -161,7 +170,7 @@ public class MenuBar extends JMenuBar
 		file.addSeparator();
 		file.add(quit);
 		quit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK));
-		
+		file.add(generer);
 
 		
 		
@@ -169,13 +178,14 @@ public class MenuBar extends JMenuBar
 		
 		
 		
-		
+		generation.add(generer);
 		typeVehicule.add(truck);
 		typeVehicule.add(car);
 		edition.add(typeVehicule);
 		
 		menuBar.add(file);
 		menuBar.add(edition);
+		menuBar.add(generation);
 		
 		window.setJMenuBar(menuBar);
 	}

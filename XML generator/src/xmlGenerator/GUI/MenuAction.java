@@ -17,15 +17,25 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import Main.Arc;
+import Main.Environement;
+import Main.Node;
+import Main.Signaling;
 import Main.Car;
 import Main.Driver;
+import Main.Environement;
 import Main.Position;
+import Main.Scenario;
 import Main.Vehicule;
+import Main.XML;
 import xmlGenerator.Type;
  
 public class MenuAction
 {
 	
+	
+
+
 	/**
 	 * opens an image and display it in the drawPanel
 	 * @param menuBar menubar
@@ -286,6 +296,29 @@ public class MenuAction
 	}
 	
 
+	public static ActionListener generer(MenuBar menuBar) {
+		return new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				
+				Collection<Signaling> signaling = null;
+				ArrayList<Node> n = null;
+				ArrayList<Arc> a = null;
+				
+				Environement env = new Environement("./img/picture.png",signaling, n, a);
+		    	
+		    	
+		    	
+				Scenario s = new Scenario(this.vehi,env);
+		    	
+		    	XML xml = new XML();
+		    	xml.toXML(s);
+				System.out.println("généré");				
+			}
+		};
+	}
 	
 	
 

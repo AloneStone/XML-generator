@@ -1,4 +1,7 @@
 package Main;
+
+import java.util.ArrayList;
+
 /**
  * 
  * @author Bastien26
@@ -9,8 +12,9 @@ public abstract class Vehicule {
 	public Integer lenth;
 	public Integer maxSpeed;
 	public Integer brakingDistance;
-	public Position startingPosition;
-	public Position endingPosition;
+	public Node startNode;
+	//public Node endNode;
+	public ArrayList<Node> route;
 	public Driver driver;
 	public Integer width;
 	

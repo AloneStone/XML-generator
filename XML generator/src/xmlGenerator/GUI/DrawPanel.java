@@ -36,7 +36,7 @@ public class DrawPanel extends JPanel
 	 */
 	private ArrayList<Shape> points = new ArrayList<Shape>();
 
-	
+	private ArrayList<Vehicule> vehi;
 	/**
 	 * Initializes the DrawPanel
 	 * @param img the image selected in the JFileChooser
@@ -45,10 +45,11 @@ public class DrawPanel extends JPanel
 	{
 		this.point = new Pointer();
 		this.image = img;
+		this.vehi=null;
 		this.addMouseListener(new MouseAdapter(){
 			public void mousePressed(MouseEvent e){
 				points.add(new Shape(e.getX() - (point.getSize() / 2), e.getY() - (point.getSize() / 2),point));
-				Car v = new Car(100, 10,new Position(90,90),new Position(100,100)  , new Driver(),10);
+				
 				
 				repaint();
 			}
@@ -86,11 +87,11 @@ public class DrawPanel extends JPanel
 				ImageObserver observer = null;
 				g.drawImage(img , shape.getPosX(), shape.getPosY(), observer);;	
 				System.out.println("vehicule créé");
-				Collection<Vehicule> vehicule = new ArrayList<Vehicule>();
-				Vehicule v1 = new Car(100, 10,new Position(90,90), new Position(100,100)  , new Driver(),10);
-				vehicule.add(v1);
-				System.out.println(vehicule);
-		    	
+				// TODO this.vehi.add(new voiture)
+				//Vehicule v1 = new Car(100, 10,new Position(90,90), new Position(100,100)  , new Driver(),10);
+				//vehicule.add(v1);
+				//System.out.println(vehicule);
+		    	new Display();
 			}	
 			else if(shape.getType().equals(Type.TRUCK))
 			{
@@ -102,7 +103,7 @@ public class DrawPanel extends JPanel
 	}
 	
 	
-	/**
+	/**	
 	 * Erases the last PhotopShape painted
 	 */
 	public void erase()
@@ -150,6 +151,10 @@ public class DrawPanel extends JPanel
 	public void setPointerSize(int size)
 	{
 		this.point.setSize(size+this.point.getSize());
+	}
+
+	public ArrayList<Vehicule> getVehi() {
+		return vehi;
 	}
 	
 }
