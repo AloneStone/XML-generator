@@ -17,6 +17,7 @@ public abstract class Vehicule {
 	public ArrayList<Node> route;
 	public Driver driver;
 	public Integer width;
+	//public Object getStartNode;
 	
 	
 	
@@ -42,17 +43,19 @@ public abstract class Vehicule {
 	public void setBrakingDistance(Integer brakingDistance) {
 		this.brakingDistance = brakingDistance;
 	}
-	public Position getStartingPosition() {
-		return startingPosition;
+	public Node getStartNode(){
+		return startNode;
 	}
-	public void setStartingPosition(Position startingPosition) {
-		this.startingPosition = startingPosition;
+	
+
+	public void setStartingNode(Node startNode) {
+		this.startNode = startNode;
 	}
-	public Position getEndingPosition() {
-		return endingPosition;
+	public  ArrayList<Node> getRoute() {
+		return route;
 	}
-	public void setEndingPosition(Position endingPosition) {
-		this.endingPosition = endingPosition;
+	public void setRoute(ArrayList<Node> route) {
+		this.route = route;
 	}
 	public Driver getDriver() {
 		return driver;

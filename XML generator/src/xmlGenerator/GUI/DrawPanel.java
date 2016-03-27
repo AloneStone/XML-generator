@@ -21,6 +21,7 @@ import xmlGenerator.Shape;
 import xmlGenerator.Type;
 public class DrawPanel extends JPanel
 {
+	
 	/**
 	 * The pointer used to draw on the DrawPanel
 	 */
@@ -156,5 +157,6 @@ public class DrawPanel extends JPanel
 	public ArrayList<Vehicule> getVehi() {
 		return vehi;
 	}
+	
 	
 }

@@ -11,7 +11,9 @@ public class Driver {
 	public Driver(){
 		this.stressLevel = 0;
 	}
-	
+	public Driver(int stressLevel){
+		this.stressLevel = stressLevel;
+	}
 	
 	public Integer getStressLevel() {
 		return stressLevel;

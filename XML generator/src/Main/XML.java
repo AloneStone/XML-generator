@@ -88,17 +88,16 @@ public class XML {
 		        brakingDistance.appendChild(document.createTextNode(v.getBrakingDistance().toString()));   
 	
 		        final Element startingPositionX = document.createElement("startingPositionX");
-		        startingPositionX.appendChild(document.createTextNode(v.getStartingPosition().getX().toString()));   
+		        startingPositionX.appendChild(document.createTextNode(v.getStartNode().toString()));   
 		        
 		        final Element startingPositionY = document.createElement("startingPositionY");
-		        startingPositionY.appendChild(document.createTextNode(v.getStartingPosition().getY().toString()));  
+		        startingPositionY.appendChild(document.createTextNode(v.getStartNode().toString().toString()));  
 		        
 		        final Element endingPositionX = document.createElement("endingPositionX");
-		        endingPositionX.appendChild(document.createTextNode(v.getEndingPosition().getX().toString()));  
+		        endingPositionX.appendChild(document.createTextNode(v.getStartNode().toString().toString()));   
 		        
 		        final Element endingPositionY = document.createElement("endingPositionY");
-		        endingPositionY.appendChild(document.createTextNode(v.getEndingPosition().getX().toString()));  
-		        
+		        endingPositionY.appendChild(document.createTextNode(v.getStartNode().toString().toString())); 		        
 		        final Element driver = document.createElement("driver");
 		        driver.appendChild(document.createTextNode("driver"));  
 		        

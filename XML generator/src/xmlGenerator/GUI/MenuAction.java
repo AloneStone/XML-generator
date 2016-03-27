@@ -299,6 +299,9 @@ public class MenuAction
 	public static ActionListener generer(MenuBar menuBar) {
 		return new ActionListener()
 		{
+			
+			//private Collection<Vehicule> vehi;
+
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
@@ -311,10 +314,10 @@ public class MenuAction
 		    	
 		    	
 		    	
-				Scenario s = new Scenario(this.vehi,env);
+				//Scenario s = new Scenario(,env);
 		    	
 		    	XML xml = new XML();
-		    	xml.toXML(s);
+		    //	xml.toXML(s);
 				System.out.println("généré");				
 			}
 		};

@@ -1,4 +1,7 @@
 package Main;
+
+import java.util.ArrayList;
+
 /**
  * 
  * @author Bastien26
@@ -17,14 +20,16 @@ public class Moto extends Vehicule {
 	 * @param ePosition
 	 * @param d
 	 * @param width
+	 * @param startNode 
+	 * @param route 
 	 */
-	public Moto(int maxS, int bd,Position sPosition, Position ePosition , Driver d ,int width){
+	public Moto(int maxS, int bd, Driver d ,int width, Node startNode, ArrayList<Node> route){
 		
 		this.lenth = TRUCK_LENTH;
 		this.maxSpeed = maxS;
 		this.brakingDistance = bd;
-		this.startingPosition = sPosition;
-		this.endingPosition = ePosition;
+		this.startNode = startNode;
+		this.route = route;
 		this.driver = d;
 		this.width = TRUCK_LENTH;
 	}
