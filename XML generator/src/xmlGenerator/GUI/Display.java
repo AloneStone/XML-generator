@@ -38,14 +38,14 @@ public class Display extends JFrame implements ActionListener {
 	//private String[] behaviors;
 	public  String selected;
 	public int stresslevel = 50;
-	CollectionVehicules vehicules;
+	public ArrayList<Vehicule> vehicules;
 	
 	
 	
 	
 	//private JComboBox jComboBox;
 		public Display(){
-			//VehiculesCollection listeDeVehicule = new VehiculesCollection();
+			this.vehicules = new ArrayList<Vehicule>();
 			String[] behaviors = new String[] { "normal", "Enervé", "trés Enervé" };
                 this.setTitle("XML Generator");
                 this.setSize(300, 500);
@@ -141,23 +141,27 @@ public class Display extends JFrame implements ActionListener {
 			
 			if (selected == "normal" ){
 				  Car v1 = new Car(50, 30, new Node(1,new Position(25,25)),n, new Driver(stresslevel) ,5);
-	              //vehicules.getVehi().add(v1);
+	              vehicules.add(v1);
 	              System.out.print("normal");
 				}
 			if (selected == "Enervé" ){
 				   Car v2 = new Car(100, 30, new Node(1,new Position(25,25)),n, new Driver(stresslevel) ,5);
-				   //vehicules.getVehi().add(v2);
+				   vehicules.add(v2);
 		              System.out.print(vehicules);
 			}
 			
 			if (selected == "trés Enervé" ){
 				   Car v3 = new Car(150, 30, new Node(1,new Position(25,25)),n, new Driver(stresslevel) ,5);
-				   //vehicules.getVehi().add(v3);
+				   vehicules.add(v3);
 		              System.out.print(vehicules);
 			}
 			dispose();
         
 }
+
+		public ArrayList<Vehicule> getVehicules() {
+			return vehicules;
+		}
 }
 
 	
