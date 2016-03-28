@@ -292,7 +292,7 @@ public class MenuAction
 		return new ActionListener()
 		{
 			
-			//private Collection<Vehicule> vehi;
+			
 
 			@Override
 			public void actionPerformed(ActionEvent e)
@@ -309,9 +309,9 @@ public class MenuAction
 				
 				//Scenario s = new Scenario();
 		    	
-		    	XML xml = new XML();
+		    	//XML xml = new XML();
 		    	//xml.toXML(s);
-				System.out.println("généré");				
+				//System.out.println("généré");				
 			}
 		};
 	}

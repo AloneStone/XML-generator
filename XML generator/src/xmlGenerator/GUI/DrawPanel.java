@@ -81,18 +81,15 @@ public class DrawPanel extends JPanel
 		
 		for(Shape shape : this.points)
 		{
-			//g.setColor(photopShape.getColor());
 			if(shape.getType().equals(Type.CAR))
 			{
 				Image img = getToolkit().getImage(getClass().getResource("/xmlGenerator/GUI/car.png"));
 				ImageObserver observer = null;
 				g.drawImage(img , shape.getPosX(), shape.getPosY(), observer);;	
-				System.out.println("vehicule créé");
-				// TODO this.vehi.add(new voiture)
-				//Vehicule v1 = new Car(100, 10,new Position(90,90), new Position(100,100)  , new Driver(),10);
-				//vehicule.add(v1);
-				//System.out.println(vehicule);
-		    	new Display();
+				
+				
+		    	new Popup();
+		    	System.out.println("vehicule créé");
 			}	
 			else if(shape.getType().equals(Type.TRUCK))
 			{
