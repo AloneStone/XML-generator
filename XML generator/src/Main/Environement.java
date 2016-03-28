@@ -51,6 +51,7 @@ public class Environement {
          a.add(new Arc(4, n2, n5, 50));
          a.add(new Arc(5, n3, n6, 50));
          
+         
          a.add(new Arc(6, n4, n5, 50));
          a.add(new Arc(7, n5, n6, 50));
          
