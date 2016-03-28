@@ -187,6 +187,7 @@ public class MenuBar extends JMenuBar
 		menuBar.add(edition);
 		
 		
+		
 		window.setJMenuBar(menuBar);
 	}
 	
