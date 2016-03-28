@@ -39,6 +39,9 @@ public class Display extends JFrame implements ActionListener {
 	public  String selected;
 	public int stresslevel = 50;
 	public ArrayList<Vehicule> vehicules;
+	public String nodeDepart;
+	public String trajet;
+	
 	
 	
 	
@@ -57,13 +60,15 @@ public class Display extends JFrame implements ActionListener {
                 JLabel label = new JLabel("Rentrez le noeud de départ :");
                 panel.add(label);
                 JTextArea text1 = new JTextArea("", 2, 10);
-                panel.add(text1);        
+                panel.add(text1); 
+
                 
-            JLabel label2 = new JLabel("Rentrez le noeud d'arrivée :");
+            JLabel label2 = new JLabel("Rentrez le trajet :");
             panel.add(label2);
             JTextArea text2 = new JTextArea("", 2, 10);
+
             panel.add(text2);
-                
+  
             JLabel label3 = new JLabel("Rentrez le comportement du véhicule :");
             label3.setLocation(50, 50);
             panel.add(label3);
@@ -139,7 +144,8 @@ public class Display extends JFrame implements ActionListener {
                n.add(n7);
                n.add(n8);
                n.add(n9);
-			
+               System.out.println(this.nodeDepart);
+               System.out.println(this.trajet);
 			if (selected == "normal" ){
 				  Car v1 = new Car(50, 30, new Node(1,new Position(25,25)),n, new Driver(stresslevel) ,5);
 	              vehicules.add(v1);
