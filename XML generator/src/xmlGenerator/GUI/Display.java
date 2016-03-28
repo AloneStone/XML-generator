@@ -35,7 +35,7 @@ public class Display extends JFrame implements ActionListener {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	//private String[] behaviors;
+	private String[] behaviors;
 	public  String selected;
 	public int stresslevel = 50;
 	public ArrayList<Vehicule> vehicules;
@@ -46,7 +46,7 @@ public class Display extends JFrame implements ActionListener {
 	//private JComboBox jComboBox;
 		public Display(){
 			this.vehicules = new ArrayList<Vehicule>();
-			String[] behaviors = new String[] { "normal", "Enervé", "trés Enervé" };
+			this.behaviors = new String[] { "normal", "Enervé", "trés Enervé" };
                 this.setTitle("XML Generator");
                 this.setSize(300, 500);
                 this.setLocationRelativeTo(null);
@@ -67,6 +67,7 @@ public class Display extends JFrame implements ActionListener {
             JLabel label3 = new JLabel("Rentrez le comportement du véhicule :");
             label3.setLocation(50, 50);
             panel.add(label3);
+            // ca je comprend pas
             JComboBox<String> behaviorList = new JComboBox<>(behaviors);
             behaviorList.addActionListener(new ActionListener() {
             	 public void actionPerformed(ActionEvent e) {
