@@ -3,14 +3,20 @@ package xmlGenerator.GUI;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.image.ImageObserver;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.swing.Action;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
 import Main.Car;
 import Main.Driver;
@@ -25,7 +31,7 @@ public class DrawPanel extends JPanel
 	/**
 	 * The pointer used to draw on the DrawPanel
 	 */
-	private Pointer point;
+	public static Pointer point;
 	
 	/**
 	 * The image selected in the JFileChooser (null if not)
@@ -33,11 +39,10 @@ public class DrawPanel extends JPanel
 	private Image image;
 	
 	/**
-	 * An array of Shape : represents all the Shape draw on the DrawPanel
+	 * An array of Shape : represents all the Shape drew on the DrawPanel
 	 */
-	private ArrayList<Shape> points = new ArrayList<Shape>();
-
-	private ArrayList<Vehicule> vehi;
+	public static ArrayList<Shape> points = new ArrayList<Shape>();
+	
 	/**
 	 * Initializes the DrawPanel
 	 * @param img the image selected in the JFileChooser
@@ -46,27 +51,30 @@ public class DrawPanel extends JPanel
 	{
 		this.point = new Pointer();
 		this.image = img;
-		this.vehi=null;
+		
 		this.addMouseListener(new MouseAdapter(){
-			public void mousePressed(MouseEvent e){
-				points.add(new Shape(e.getX() - (point.getSize() / 2), e.getY() - (point.getSize() / 2),point));
-				
-				
+			public void mouseClicked(MouseEvent e){
+				addVehicle(e);
 				repaint();
 			}
 		});
 		
-		this.addMouseMotionListener(new MouseMotionListener(){
-			public void mouseDragged(MouseEvent e) {
-				points.add(new Shape(e.getX() - (point.getSize() / 2), e.getY() - (point.getSize() / 2),point));
-				
-				repaint();
-			}
-			
-			public void mouseMoved(MouseEvent e) {}
-		});
 		
+
 	}
+	
+	
+	private void addVehicle(MouseEvent e){
+		
+			new Popup(e.getX(), e.getY());
+	    	System.out.println("vehicule créé en "+e.getX()+" : "+e.getY());
+	    	for(Vehicule vhc: Main.Main.vehicules ){
+	    		System.out.println(vhc);
+	    	}
+
+	}
+	
+
 	
 	/**
 	 * Draws the selected image and all the PhotopShapes contain in the array
@@ -74,30 +82,17 @@ public class DrawPanel extends JPanel
 	 */
 	public void paintComponent(Graphics g) 
 	{
-		
-		g.fillRect(0, 0, this.getWidth(), this.getHeight());
-		g.drawImage(this.image, getX(), getY(), null);
-		
-		
-		for(Shape shape : this.points)
-		{
-			if(shape.getType().equals(Type.CAR))
+
+			g.fillRect(0, 0, this.getWidth(), this.getHeight());
+			g.drawImage(this.image, getX(), getY(), null);
+			
+			
+			for(Shape shape : this.points)
 			{
-				Image img = getToolkit().getImage(getClass().getResource("/xmlGenerator/GUI/car.png"));
-				ImageObserver observer = null;
-				g.drawImage(img , shape.getPosX(), shape.getPosY(), observer);;	
+				g.drawImage(getToolkit().getImage(getClass().getResource("/xmlGenerator/GUI/car.png")), shape.getPosX(), shape.getPosY(), null);
 				
-				
-		    	new Popup();
-		    	System.out.println("vehicule créé");
-			}	
-			else if(shape.getType().equals(Type.TRUCK))
-			{
-				Image img = getToolkit().getImage(getClass().getResource("/xmlGenerator/GUI/car.png"));
-				ImageObserver observer = null;
-				g.drawImage(img , shape.getPosX()-shape.getSize(), shape.getPosY()-shape.getSize(), observer);   
-			}	
-		}        
+			}       
+
 	}
 	
 	
@@ -151,9 +146,5 @@ public class DrawPanel extends JPanel
 		this.point.setSize(size+this.point.getSize());
 	}
 
-	public ArrayList<Vehicule> getVehi() {
-		return vehi;
-	}
-	
 	
 }

@@ -69,4 +69,9 @@ public abstract class Vehicule {
 	public void setWidth(Integer width) {
 		this.width = width;
 	}
+	
+	@Override
+	public String toString(){
+		return ""+maxSpeed;
+	}
 }

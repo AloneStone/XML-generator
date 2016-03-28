@@ -39,8 +39,8 @@ public class Main {
 		
 		
 		
-			n = new ArrayList<Node>(); 
-	     	A = new Node(1,new Position(25,25));
+		   n = new ArrayList<Node>(); 
+	       A = new Node(1,new Position(25,25));
 	       B = new Node(2,new Position(490,25));
 	       C = new Node(3,new Position(940,25));
 	      
@@ -62,8 +62,6 @@ public class Main {
 	      n.add(H);
 	      n.add(I);
 	      vehicules = new ArrayList<Vehicule>();
-		Car test = new Car();
-		vehicules.add(test);
 		
     	XmlGenerator xmlgenerator = new XmlGenerator();
 		GUIXmlGenerator guiXmlGenerator = new GUIXmlGenerator(xmlgenerator);	

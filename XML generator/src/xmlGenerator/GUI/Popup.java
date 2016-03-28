@@ -21,6 +21,7 @@ import Main.Car;
 import Main.Driver;
 import Main.Node;
 import Main.Position;
+import xmlGenerator.Shape;
 /**
  * 
  * @author Maxime, Antoine
@@ -47,7 +48,7 @@ public class Popup extends JFrame implements ActionListener {
 	
 	
 	
-		public Popup(){
+		public Popup(int mousePositionX, int mousePositionY){
 			
 			this.behaviors = new String[] { "normal", "Enervé", "trés Enervé" };
                 this.setTitle("XML Generator");
@@ -89,17 +90,32 @@ public class Popup extends JFrame implements ActionListener {
         		jSlider.setPaintTicks(true);
         		jSlider.setValue(50);
         		jSlider.addChangeListener(new ChangeListener() {
+        			
         			@Override
     				public void stateChanged(ChangeEvent arg0) {
-    				stresslevel = jSlider.getValue();}});
+    				stresslevel = jSlider.getValue();
+    				}
+        		});
                 JButton okButton =  new JButton("Valider");
-                okButton.addActionListener(this);
+                okButton.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						DrawPanel.points.add(new Shape(mousePositionX - (DrawPanel.point.getSize() / 2), mousePositionY - (DrawPanel.point.getSize() / 2), DrawPanel.point));
+						createVehicle();
+						dispose();
+					}
+
+					
+				});
                 JButton fermer =  new JButton("Fermer");
-                fermer.addActionListener(
-                		new ActionListener() {
-                			@Override
-    						public void actionPerformed(ActionEvent arg0) {
-    							dispose();}});
+                fermer.addActionListener(new ActionListener() {
+                	
+        			@Override
+					public void actionPerformed(ActionEvent arg0) {
+						dispose();
+					}
+        		});
                 
                
                 
@@ -107,27 +123,38 @@ public class Popup extends JFrame implements ActionListener {
                 panel1.add(text1); 
                 panel1.add(label2);
                 panel1.add(text2);
-                
-            
-            
-         
                 panel2.add(label3);
                 panel2.add(behaviorList);
                 panel2.add(label4);
                 panel2.add(jSlider);
-          
-            
                 panel2.add(okButton);
                 panel2.add(fermer);
                
-            this.add( splitPane1);
+            this.add(splitPane1);
           
           
                                 
         } 
 
     
-    
+		private void createVehicle() {
+			if (selected == "normal" ){
+				  Car v1 = new Car(50, 30, null ,Main.Main.n, new Driver(stresslevel) ,5);
+				  Main.Main.vehicules.add(v1);
+	            
+				}
+			if (selected == "Enervé" ){
+				   Car v2 = new Car(100, 30, null,Main.Main.n, new Driver(stresslevel) ,5);
+				   Main.Main.vehicules.add(v2);
+		            
+			}
+			
+			if (selected == "trés Enervé" ){
+				   Car v3 = new Car(150, 30, null ,Main.Main.n, new Driver(stresslevel) ,5);
+				   Main.Main.vehicules.add(v3);
+		             
+			}
+		}
         
     	@Override
 		public void actionPerformed(ActionEvent e) {
@@ -143,7 +170,6 @@ public class Popup extends JFrame implements ActionListener {
              switch (nodeStart){
              case "A" : 
             	 nodeStartUsing = Main.Main.A;
-            	 
              case "B" : 
             	 nodeStartUsing = Main.Main.B;
              case "C" : 
@@ -189,6 +215,7 @@ public class Popup extends JFrame implements ActionListener {
 				   Main.Main.vehicules.add(v3);
 		             
 			}
+			
 			dispose();
         
     	}
