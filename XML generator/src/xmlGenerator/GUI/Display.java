@@ -74,7 +74,7 @@ public class Display extends JFrame implements ActionListener {
             		 selected = (String)behaviorList.getSelectedItem();
     			}
     		});
-            
+            behaviorList.setSelectedIndex(0);
             panel.add(behaviorList);
             
             JLabel label4 = new JLabel("Niveau de stress du conducteur");
@@ -85,6 +85,7 @@ public class Display extends JFrame implements ActionListener {
     		jSlider.setMajorTickSpacing(10);
     		jSlider.setMinorTickSpacing(5);
     		jSlider.setPaintTicks(true);
+    		jSlider.setValue(50);
     		jSlider.addChangeListener(new ChangeListener() {
 
 				@Override
@@ -102,6 +103,20 @@ public class Display extends JFrame implements ActionListener {
             okButton.addActionListener(this);
             panel.add(okButton);
             this.add(panel);
+            
+            JButton fermer =  new JButton("Fermer");
+            fermer.addActionListener(
+            		new ActionListener() {
+
+        				@Override
+						public void actionPerformed(ActionEvent arg0) {
+							dispose();
+							
+						}
+            		});
+            panel.add(fermer);
+            this.add(panel);
+            
           
                                 
         }
@@ -115,6 +130,7 @@ public class Display extends JFrame implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			
 			System.out.print(selected);
+			System.out.print("/");
 			System.out.print(stresslevel);
 			
 			ArrayList<Node> n = new ArrayList<Node>(); 
@@ -140,8 +156,8 @@ public class Display extends JFrame implements ActionListener {
                n.add(n8);
                n.add(n9);
                
-               System.out.println(this.nodeDepart);
-               System.out.println(this.trajet);
+               //System.out.println(this.nodeDepart);
+               //System.out.println(this.trajet);
 			if (selected == "normal" ){
 				  Car v1 = new Car(50, 30, new Node(1,new Position(25,25)),n, new Driver(stresslevel) ,5);
 				  Main.Main.vehicules.add(v1);
@@ -160,7 +176,7 @@ public class Display extends JFrame implements ActionListener {
 			}
 			dispose();
         
-}
+    	}
 }
 
 	

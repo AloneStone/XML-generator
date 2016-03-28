@@ -23,7 +23,7 @@ public class Main {
 	public static ArrayList<Vehicule> vehicules;
 
 	public static void main(final String[] args) {
-		
+		ArrayList<Vehicule> vehicules = new ArrayList<Vehicule>();
 		Car test = new Car();
 		vehicules.add(test);
 		
@@ -32,7 +32,7 @@ public class Main {
 		xmlgenerator.GUIAssociation(guiXmlGenerator);
 		SwingUtilities.invokeLater(guiXmlGenerator);
 
-    	System.out.println("test");
+    	System.out.println("lancement de l'application");
     	
     	
 
