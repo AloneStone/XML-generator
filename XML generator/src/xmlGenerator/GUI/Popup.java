@@ -136,55 +136,34 @@ public class Popup extends JFrame implements ActionListener {
 			System.out.print("/");
 			System.out.print(stresslevel);
 			
-			ArrayList<Node> n = new ArrayList<Node>(); 
-		     Node A = new Node(1,new Position(25,25));
-               Node B = new Node(2,new Position(490,25));
-               Node C = new Node(3,new Position(940,25));
-               
-               Node D = new Node(4,new Position(25,260));
-               Node E = new Node(5,new Position(490,260));
-               Node F = new Node(6,new Position(940,260));
-               
-               Node G = new Node(7,new Position(25,500));
-               Node H = new Node(8,new Position(490,260));
-               Node I = new Node(9,new Position(940,260));
-               
-               n.add(A);
-               n.add(B);
-               n.add(C);
-               n.add(D);
-               n.add(E);
-               n.add(F);
-               n.add(G);
-               n.add(H);
-               n.add(I);
-               
-             nodeStart = text1.getText().toString();
+			System.out.print(text1.getText());
+			
+            nodeStart = text1.getText();
             Node nodeStartUsing = null;
              switch (nodeStart){
              case "A" : 
-            	 nodeStartUsing = A;
+            	 nodeStartUsing = Main.Main.A;
             	 
              case "B" : 
-            	 nodeStartUsing = B;
+            	 nodeStartUsing = Main.Main.B;
              case "C" : 
-            	 nodeStartUsing = C;
+            	 nodeStartUsing = Main.Main.C;
              case "D" : 
-            	 nodeStartUsing = D;
+            	 nodeStartUsing = Main.Main.D;
              case "E" : 
-            	 nodeStartUsing = E;
+            	 nodeStartUsing = Main.Main.E;
             	 
              case "F" : 
-            	 nodeStartUsing = F;
+            	 nodeStartUsing = Main.Main.F;
             	 
              case "G" : 
-            	 nodeStartUsing = G;
+            	 nodeStartUsing = Main.Main.G;
             	 
              case "H" : 
-            	 nodeStartUsing = H;
+            	 nodeStartUsing = Main.Main.H;
             	 
              case "I" : 
-            	 nodeStartUsing = I; 
+            	 nodeStartUsing = Main.Main.I; 
             
              }
              
@@ -195,18 +174,18 @@ public class Popup extends JFrame implements ActionListener {
              
               
             if (selected == "normal" ){
-				  Car v1 = new Car(50, 30, nodeStartUsing ,n, new Driver(stresslevel) ,5);
+				  Car v1 = new Car(50, 30, nodeStartUsing ,Main.Main.n, new Driver(stresslevel) ,5);
 				  Main.Main.vehicules.add(v1);
 	            
 				}
 			if (selected == "Enervé" ){
-				   Car v2 = new Car(100, 30, nodeStartUsing,n, new Driver(stresslevel) ,5);
+				   Car v2 = new Car(100, 30, nodeStartUsing,Main.Main.n, new Driver(stresslevel) ,5);
 				   Main.Main.vehicules.add(v2);
 		            
 			}
 			
 			if (selected == "trés Enervé" ){
-				   Car v3 = new Car(150, 30, nodeStartUsing ,n, new Driver(stresslevel) ,5);
+				   Car v3 = new Car(150, 30, nodeStartUsing ,Main.Main.n, new Driver(stresslevel) ,5);
 				   Main.Main.vehicules.add(v3);
 		             
 			}
