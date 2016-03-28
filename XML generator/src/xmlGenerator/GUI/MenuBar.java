@@ -153,7 +153,7 @@ public class MenuBar extends JMenuBar
 		truck.addActionListener(MenuAction.truck(this));
 		
 		generer.addActionListener(MenuAction.generer(this));
-		//generation.add(generer);
+		
 		
 		
 		file.add(openImage);
