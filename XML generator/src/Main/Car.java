@@ -23,6 +23,14 @@ public class Car extends Vehicule{
 		
 	}
 
+	
+
+	public Car() {
+		this.lenth = CAR_LENTH;
+		this.maxSpeed = 50;
+		this.brakingDistance = 30;
+	}
+
 	@Override
 	String getType() {
 		

@@ -33,17 +33,17 @@ public class GUIXmlGenerator implements Runnable
 	
 	/**
 	 * the constructor of the GUI
-	 * @param photop photop
+	 * @param xml 
 	 */
-	public GUIXmlGenerator (XmlGenerator photop)
+	public GUIXmlGenerator (XmlGenerator xml)
 	{
-		this.generator = photop;
+		this.generator = xml;
 	}
 	
 	/**
 	 * Creates the GUI
 	 */
-	private void GUIPhotopCreator()
+	private void GUIxml()
 	{
 		this.window = new JFrame();
 		this.window.setExtendedState(JFrame.MAXIMIZED_BOTH); 
@@ -67,7 +67,7 @@ public class GUIXmlGenerator implements Runnable
 	@Override
 	public void run()
 	{
-		this.GUIPhotopCreator();
+		this.GUIxml();
 	}
 
 }

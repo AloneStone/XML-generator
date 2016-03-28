@@ -1,11 +1,11 @@
 package Main;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 import javax.swing.SwingUtilities;
 
 import xmlGenerator.XmlGenerator;
-import xmlGenerator.GUI.CollectionVehicules;
 import xmlGenerator.GUI.GUIXmlGenerator;
 
 /**
@@ -19,9 +19,13 @@ import xmlGenerator.GUI.GUIXmlGenerator;
 
 public class Main {
 
-    
+
+	public static ArrayList<Vehicule> vehicules;
 
 	public static void main(final String[] args) {
+		
+		Car test = new Car();
+		vehicules.add(test);
 		
     	XmlGenerator xmlgenerator = new XmlGenerator();
 		GUIXmlGenerator guiXmlGenerator = new GUIXmlGenerator(xmlgenerator);	

@@ -1,30 +1,25 @@
 package xmlGenerator.GUI;
 
-import java.awt.Container;
 import java.awt.event.ActionEvent;
-
-import Main.Car;
-import Main.Driver;
-import Main.Main;
-import Main.Node;
-import Main.Position;
-import Main.Vehicule;
-
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Collection;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JFrame;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.Spring;
+import javax.swing.WindowConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import Main.Car;
+import Main.Driver;
+import Main.Node;
+import Main.Position;
+import Main.Vehicule;
 
 
 
@@ -38,7 +33,7 @@ public class Display extends JFrame implements ActionListener {
 	private String[] behaviors;
 	public  String selected;
 	public int stresslevel = 50;
-	public ArrayList<Vehicule> vehicules;
+	
 	public String nodeDepart;
 	public String trajet;
 	
@@ -48,12 +43,12 @@ public class Display extends JFrame implements ActionListener {
 	
 	//private JComboBox jComboBox;
 		public Display(){
-			this.vehicules = new ArrayList<Vehicule>();
+			
 			this.behaviors = new String[] { "normal", "Enervé", "trés Enervé" };
                 this.setTitle("XML Generator");
                 this.setSize(300, 500);
                 this.setLocationRelativeTo(null);
-                setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);      
+                this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);      
                
                 this.setVisible(true);                
                 JPanel panel = new JPanel();
@@ -144,31 +139,28 @@ public class Display extends JFrame implements ActionListener {
                n.add(n7);
                n.add(n8);
                n.add(n9);
+               
                System.out.println(this.nodeDepart);
                System.out.println(this.trajet);
 			if (selected == "normal" ){
 				  Car v1 = new Car(50, 30, new Node(1,new Position(25,25)),n, new Driver(stresslevel) ,5);
-	              vehicules.add(v1);
-	              System.out.print("normal");
+				  Main.Main.vehicules.add(v1);
+	              //System.out.print("normal");
 				}
 			if (selected == "Enervé" ){
 				   Car v2 = new Car(100, 30, new Node(1,new Position(25,25)),n, new Driver(stresslevel) ,5);
-				   vehicules.add(v2);
-		              System.out.print(vehicules);
+				   Main.Main.vehicules.add(v2);
+		            
 			}
 			
 			if (selected == "trés Enervé" ){
 				   Car v3 = new Car(150, 30, new Node(1,new Position(25,25)),n, new Driver(stresslevel) ,5);
-				   vehicules.add(v3);
-		              System.out.print(vehicules);
+				   Main.Main.vehicules.add(v3);
+		             
 			}
 			dispose();
         
 }
-
-		public ArrayList<Vehicule> getVehicules() {
-			return vehicules;
-		}
 }
 
 	

@@ -69,5 +69,4 @@ public abstract class Vehicule {
 	public void setWidth(Integer width) {
 		this.width = width;
 	}
-
 }

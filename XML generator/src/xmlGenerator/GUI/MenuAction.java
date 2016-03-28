@@ -36,7 +36,7 @@ public class MenuAction
 	
 
 
-	public static CollectionVehicules vehicules; 
+	
 	public static ActionListener openImage(final MenuBar menuBar)
 	{
 		return new ActionListener()
@@ -299,18 +299,18 @@ public class MenuAction
 			{
 				
 				Collection<Signaling> signaling = null;
-				ArrayList<Node> n = null;
+				ArrayList<Node> node = null;
 				ArrayList<Arc> a = null;
 				
-				Environement env = new Environement("./img/picture.png",signaling, n, a);
+				//Environement env = new Environement("./img/picture.png",signaling, node, a);
 		    	
 		    	
 		    	
 				
-				Scenario s = new Scenario(vehicules.getVehi(),env);
-		    	System.out.print(vehicules.getVehi().toString());
+				//Scenario s = new Scenario();
+		    	
 		    	XML xml = new XML();
-		    	xml.toXML(s);
+		    	//xml.toXML(s);
 				System.out.println("généré");				
 			}
 		};
