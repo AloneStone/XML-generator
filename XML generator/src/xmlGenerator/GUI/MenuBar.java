@@ -178,14 +178,14 @@ public class MenuBar extends JMenuBar
 		
 		
 		
-		generation.add(generer);
+		file.add(generer);
 		typeVehicule.add(truck);
 		typeVehicule.add(car);
 		edition.add(typeVehicule);
 		
 		menuBar.add(file);
 		menuBar.add(edition);
-		menuBar.add(generation);
+		//menuBar.add(generation);
 		
 		window.setJMenuBar(menuBar);
 	}

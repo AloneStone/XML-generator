@@ -36,11 +36,7 @@ public class MenuAction
 	
 
 
-	/**
-	 * opens an image and display it in the drawPanel
-	 * @param menuBar menubar
-	 * @return actionListener
-	 */
+	public static CollectionVehicules vehicules; 
 	public static ActionListener openImage(final MenuBar menuBar)
 	{
 		return new ActionListener()
@@ -268,17 +264,13 @@ public class MenuAction
 	{
 		return new ActionListener()
 		{
-			public void actionPerformed(ActionEvent e, Vehicule v)
+			public void actionPerformed(ActionEvent e)
 			{
 				menuBar.getDrawPanel().setPointerType(Type.CAR);
 				
 			}
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+		
 		};
 		
 	}
@@ -314,10 +306,11 @@ public class MenuAction
 		    	
 		    	
 		    	
-				//Scenario s = new Scenario(,env);
-		    	
+				
+				Scenario s = new Scenario(vehicules.getVehi(),env);
+		    	System.out.print(vehicules.getVehi().toString());
 		    	XML xml = new XML();
-		    //	xml.toXML(s);
+		    	xml.toXML(s);
 				System.out.println("généré");				
 			}
 		};
