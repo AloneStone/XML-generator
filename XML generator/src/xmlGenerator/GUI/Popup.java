@@ -46,6 +46,7 @@ public class Popup extends JFrame implements ActionListener {
 	public JTextArea text2;
 	public JSlider jSlider2, jSlider1;
 	public JLabel label5;
+	public int vitesse;
 
 	public Popup(int mousePositionX, int mousePositionY) {
 
@@ -100,6 +101,14 @@ public class Popup extends JFrame implements ActionListener {
 		jSlider2.setMinorTickSpacing(5);
 		jSlider2.setPaintTicks(true);
 		jSlider2.setValue(50);
+		jSlider2.addChangeListener(new ChangeListener() {
+
+			@Override
+			public void stateChanged(ChangeEvent arg0) {
+				int vitesse = jSlider2.getValue();
+			}
+		});
+		
 		JLabel label5 = new JLabel("Vitesse du vehicule :");
 		label5.setLocation(100, 50);
 		JButton okButton = new JButton("Valider");
@@ -143,6 +152,7 @@ public class Popup extends JFrame implements ActionListener {
 		int brakingDistance = 30;
 		ArrayList<Node> route = new ArrayList<Node>();
 		Driver driver = new Driver(stresslevel);
+		
 		int width = 5;
 
 		if (selected.equals("normal")) {
