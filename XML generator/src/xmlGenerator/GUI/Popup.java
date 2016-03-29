@@ -37,125 +37,194 @@ import xmlGenerator.TypeVehicule;
 public class Popup extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-	private String[] behaviors;
+	
+	//private String[] behaviors;
+	
 	public String selected;
+	
 	public int stresslevel = 50;
 
 	public String nodeDepart;
-	public String trajet;
-	public JSplitPane splitPane1, splitPane2, splitPane3;
-	public JPanel panel1, panel2;
+
+	public JSplitPane splitPanePopUp;
+	
+	public JPanel panelTop, panelBot;
+	
+	public JLabel labelPath, labelProfile, labelStressLevel; 
+	
 	public String nodeStart;
+	
 	public String nodes;
-	public JTextArea text1;
-	public JTextArea text2;
-	public JSlider jSlider2, jSlider1, jSlider3;
-	public JLabel label5; // vitesse
-	public JLabel label6; // breakingdistance
+	
+	public JTextArea JTextAreaPathOfvehicle;
+	
+	public JSlider jSliderStressLevel, jSliderMaxSpeed, jSliderReactionTime;
+	
+	public JLabel labelForSpeed; 
+	
+	public JLabel labelReactionTime;
+	
+	public JScrollPane scrollOfJTextAreaPathOfvehicle; /////////////////////////////
+	
 	public int maxSpeed = 0;
 
 	public int vitesse;
+	
 	public int reactionTime;
+	
+	public JButton fermer;
+	
+	public JButton okButton;
+	
+	public JRadioButton normalBehaviour;
+	
+	public JRadioButton angryBehaviour;
 
+	public JRadioButton veryAngryBehaviour;
+	
+	public ButtonGroup behaviour;
+	
 	public Popup(int mousePositionX, int mousePositionY, TypeVehicule type) {
 
-		this.behaviors = new String[] { "   ", "normal", "Enervé",
-				"trés Enervé" };
+		//this.behaviors = new String[] { "   ", "normal", "Enervé","trés Enervé" };
+		
 		this.setTitle("XML Generator");
+		
 		this.setSize(300, 500);
+		
 		this.setLocationRelativeTo(null);
+		
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		Panel panel1 = new Panel();
-		Panel panel2 = new Panel();
+		
+		this.panelTop = new JPanel();
+		
+		this.panelBot = new JPanel();
 
-		JRadioButton normalBehaviour = new JRadioButton(" nomal ");
-		JRadioButton angryBehaviour = new JRadioButton(" énervé ");
-		JRadioButton veryAngryBehaviour = new JRadioButton(" très énervé ");
-		ButtonGroup behaviour = new ButtonGroup();
-		behaviour.add(normalBehaviour);
-		behaviour.add(angryBehaviour);
-		behaviour.add(veryAngryBehaviour);
+		this.normalBehaviour = new JRadioButton(" nomal ");
+		
+		this.angryBehaviour = new JRadioButton(" énervé ");
+		
+		this.veryAngryBehaviour = new JRadioButton(" très énervé ");
+		
+		this.behaviour = new ButtonGroup();
+		
+		this.behaviour.add(normalBehaviour);
+		
+		this.behaviour.add(angryBehaviour);
+		
+		this.behaviour.add(veryAngryBehaviour);
 
 		this.setVisible(true);
 
-		splitPane1 = new JSplitPane(JSplitPane.VERTICAL_SPLIT, panel1, panel2);
-		splitPane1.setResizeWeight(0.2);
-		splitPane1.setOneTouchExpandable(false);
-		splitPane1.setDividerLocation(0.5);
+		this.splitPanePopUp = new JSplitPane(JSplitPane.VERTICAL_SPLIT, panelTop, panelBot);
+		
+		this.splitPanePopUp.setResizeWeight(0.2);
+		
+		this.splitPanePopUp.setOneTouchExpandable(false);
+		
+		this.splitPanePopUp.setDividerLocation(0.5);
 
-		JSlider jSlider1 = new JSlider(0, 100, 50);
+		this.jSliderStressLevel = new JSlider(0, 100, 50);
 
-		jSlider1.setPaintLabels(true);
-		jSlider1.setMajorTickSpacing(10);
-		jSlider1.setMinorTickSpacing(5);
-		jSlider1.setPaintTicks(true);
-		jSlider1.setValue(50);
+		this.jSliderStressLevel.setPaintLabels(true);
+		
+		this.jSliderStressLevel.setMajorTickSpacing(10);
+		
+		this.jSliderStressLevel.setMinorTickSpacing(5);
+		
+		this.jSliderStressLevel.setPaintTicks(true);
+		
+		this.jSliderStressLevel.setValue(50);
 
-		jSlider1.addChangeListener(new ChangeListener() {
+		this.jSliderStressLevel.addChangeListener(new ChangeListener() {
+
+			@Override
+		
+			public void stateChanged(ChangeEvent arg0) {
+			
+				stresslevel = jSliderStressLevel.getValue();
+			}
+			
+		});
+		
+		this.jSliderMaxSpeed = new JSlider(0, 200, 50);
+		
+		this.jSliderMaxSpeed.setPaintLabels(true);
+		
+		this.jSliderMaxSpeed.setMajorTickSpacing(25);
+		
+		this.jSliderMaxSpeed.setMinorTickSpacing(10);
+		
+		this.jSliderMaxSpeed.setPaintTicks(true);
+		
+		this.jSliderMaxSpeed.setValue(50);
+		
+		this.jSliderMaxSpeed.addChangeListener(new ChangeListener() {
 
 			@Override
 			public void stateChanged(ChangeEvent arg0) {
-				stresslevel = jSlider1.getValue();
+		
+				maxSpeed = jSliderMaxSpeed.getValue();
 			}
 		});
-		JSlider jSlider2 = new JSlider(0, 200, 50);
-		jSlider2.setPaintLabels(true);
-		jSlider2.setMajorTickSpacing(25);
-		jSlider2.setMinorTickSpacing(10);
-		jSlider2.setPaintTicks(true);
-		jSlider2.setValue(50);
-		jSlider2.addChangeListener(new ChangeListener() {
+		
+		this.labelForSpeed = new JLabel("Vitesse du vehicule :");
+		
+		this.labelForSpeed.setLocation(100, 50);
+
+		this.jSliderReactionTime = new JSlider(0, 100, 50);
+		
+		this.jSliderReactionTime.setPaintLabels(true);
+		
+		this.jSliderReactionTime.setMajorTickSpacing(10);
+		
+		this.jSliderReactionTime.setMinorTickSpacing(5);
+		
+		this.jSliderReactionTime.setPaintTicks(true);
+		
+		this.jSliderReactionTime.setValue(5);
+		
+		this.jSliderReactionTime.addChangeListener(new ChangeListener() {
 
 			@Override
 			public void stateChanged(ChangeEvent arg0) {
-				maxSpeed = jSlider2.getValue();
-			}
-		});
-		JLabel label5 = new JLabel("Vitesse du vehicule :");
-		label5.setLocation(100, 50);
-
-		JSlider jSlider3 = new JSlider(0, 100, 50);
-		jSlider3.setPaintLabels(true);
-		jSlider3.setMajorTickSpacing(10);
-		jSlider3.setMinorTickSpacing(5);
-		jSlider3.setPaintTicks(true);
-		jSlider3.setValue(5);
-		jSlider3.addChangeListener(new ChangeListener() {
-
-			@Override
-			public void stateChanged(ChangeEvent arg0) {
-				reactionTime = jSlider3.getValue();
+		
+				reactionTime = jSliderReactionTime.getValue();
 			}
 		});
 
-		JLabel label2 = new JLabel("Rentrez le trajet :");
-		JLabel label3 = new JLabel("Rentrez le comportement du véhicule :");
+		this.labelPath = new JLabel("Rentrez le trajet :");
+		
+		this.labelProfile = new JLabel("      Rentrez le profile du conducteur :     ");
 
-		label3.setLocation(50, 50);
+		this.labelProfile.setLocation(50, 50);
 
-		JTextArea text2 = new JTextArea("", 2, 10);
-		JScrollPane scroll = new JScrollPane(text2);
+		this.JTextAreaPathOfvehicle = new JTextArea("", 2, 10);
+		
+		this.scrollOfJTextAreaPathOfvehicle = new JScrollPane(JTextAreaPathOfvehicle);
 
-		JLabel label4 = new JLabel("Niveau de stress du conducteur :");
-		label4.setLocation(100, 50);
+		this.labelStressLevel = new JLabel("Niveau de stress du conducteur :");
+		
+		this.labelStressLevel.setLocation(100, 50);
 
-		JLabel label6 = new JLabel("distance de freinage :");
-		label6.setLocation(100, 50);
+		this.labelReactionTime = new JLabel("    temps de reaction :    ");
+		
+		this.labelReactionTime.setLocation(100, 50);
 
-		JButton okButton = new JButton("Valider");
-		okButton.addActionListener(new ActionListener() {
+		this.okButton = new JButton("Valider");
+		
+		this.okButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				createVehicle(text2, type);
-				DrawPanel.points.add(new Shape(mousePositionX, mousePositionY,
-						type));
+				createVehicle(JTextAreaPathOfvehicle, type);
+				DrawPanel.points.add(new Shape(mousePositionX, mousePositionY,type));
 				dispose();
 			}
 
 		});
-		JButton fermer = new JButton("Fermer");
-		fermer.addActionListener(new ActionListener() {
+		this.fermer = new JButton("Fermer");
+		this.fermer.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -163,40 +232,40 @@ public class Popup extends JFrame implements ActionListener {
 			}
 		});
 
-		jSlider1.setValue(50); // stresslevel
-		jSlider2.setValue(50); // speed
-		jSlider3.setValue(50); // reactionTime
+		this.jSliderStressLevel.setValue(50); // stresslevel
+		this.jSliderMaxSpeed.setValue(50); // speed
+		this.jSliderReactionTime.setValue(50); // reactionTime
 
 		if (normalBehaviour.isValid()) {
-			jSlider1.setValue(25);
-			jSlider2.setValue(50);
-			jSlider3.setValue(1);
+			jSliderStressLevel.setValue(25);
+			jSliderMaxSpeed.setValue(50);
+			jSliderReactionTime.setValue(1);
 		} else if (angryBehaviour.isValid()) {
-			jSlider1.setValue(75);
-			jSlider2.setValue(100);
-			jSlider3.setValue(1);
+			jSliderStressLevel.setValue(75);
+			jSliderMaxSpeed.setValue(100);
+			jSliderReactionTime.setValue(1);
 		} else if (veryAngryBehaviour.isValid()) {
-			jSlider1.setValue(100);
-			jSlider2.setValue(150);
-			jSlider3.setValue(1);
+			jSliderStressLevel.setValue(100);
+			jSliderMaxSpeed.setValue(150);
+			jSliderReactionTime.setValue(1);
 		}
 
-		panel1.add(label2);
-		panel1.add(scroll);
-		panel2.add(label3);
-		panel2.add(normalBehaviour);
-		panel2.add(angryBehaviour);
-		panel2.add(veryAngryBehaviour);
-		panel2.add(label4);
-		panel2.add(jSlider1);
-		panel2.add(label5);
-		panel2.add(jSlider2);
-		panel2.add(label6);
-		panel2.add(jSlider3);
-		panel2.add(okButton);
-		panel2.add(fermer);
+		this.panelTop.add(labelPath);
+		this.panelTop.add(scrollOfJTextAreaPathOfvehicle);
+		this.panelBot.add(labelProfile);
+		this.panelBot.add(normalBehaviour);
+		this.panelBot.add(angryBehaviour);
+		this.panelBot.add(veryAngryBehaviour);
+		this.panelBot.add(labelStressLevel);
+		this.panelBot.add(jSliderStressLevel);
+		this.panelBot.add(labelForSpeed);
+		this.panelBot.add(jSliderMaxSpeed);
+		this.panelBot.add(labelReactionTime);
+		this.panelBot.add(jSliderReactionTime);
+		this.panelBot.add(okButton);
+		this.panelBot.add(fermer);
 
-		this.add(splitPane1);
+		this.add(splitPanePopUp);
 	}
 
 	private void createVehicle(JTextArea nodesString, TypeVehicule type) {
