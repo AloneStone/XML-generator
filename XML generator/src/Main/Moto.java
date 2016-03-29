@@ -23,12 +23,10 @@ public class Moto extends Vehicule {
 	 * @param startNode
 	 * @param route
 	 */
-	public Moto(int maxS, int bd, Driver d, int width,
-			ArrayList<Node> route) {
+	public Moto(ArrayList<Node> route, Driver d) {
 
 		this.lenth = TRUCK_LENTH;
-		this.maxSpeed = maxS;
-		this.brakingDistance = bd;
+		
 		this.route = route;
 		this.driver = d;
 		this.width = TRUCK_LENTH;

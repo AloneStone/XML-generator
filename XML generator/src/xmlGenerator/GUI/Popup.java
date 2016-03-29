@@ -44,13 +44,17 @@ public class Popup extends JFrame implements ActionListener {
 	public String nodes;
 	public JTextArea text1;
 	public JTextArea text2;
-	public JSlider jSlider2, jSlider1;
-	public JLabel label5;
+	public JSlider jSlider2, jSlider1, jSlider3;
+	public JLabel label5; // vitesse 
+	public JLabel label6; //breakingdistance 
+	public int maxSpeed = 0;
+	
 	public int vitesse;
+	public int reactionTime;
 
 	public Popup(int mousePositionX, int mousePositionY) {
 
-		this.behaviors = new String[] { "normal", "Enervé", "trés Enervé" };
+		this.behaviors = new String[] { "   ","normal", "Enervé", "trés Enervé" };
 		this.setTitle("XML Generator");
 		this.setSize(300, 500);
 		this.setLocationRelativeTo(null);
@@ -64,39 +68,23 @@ public class Popup extends JFrame implements ActionListener {
 		splitPane1.setResizeWeight(0.2);
 		splitPane1.setOneTouchExpandable(false);
 		splitPane1.setDividerLocation(0.5);
-
-		JLabel label2 = new JLabel("Rentrez le trajet :");
-		JLabel label3 = new JLabel("Rentrez le comportement du véhicule :");
-		label3.setLocation(50, 50);
-		JComboBox<String> behaviorList = new JComboBox<>(behaviors);
-		behaviorList.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				selected = (String) behaviorList.getSelectedItem();
-			}
-		});
-		behaviorList.setSelectedIndex(0);
-		//JTextArea text1 = new JTextArea("", 2, 10);
 		
-		JTextArea text2 = new JTextArea("", 2, 10);
-		JScrollPane scroll = new JScrollPane(text2);
+JSlider jSlider1 = new JSlider(0, 100, 50);
 		
-		JLabel label4 = new JLabel("Niveau de stress du conducteur :");
-		label4.setLocation(100, 50);
-		JSlider jSlider = new JSlider(0, 100, 50);
-		
-		jSlider.setPaintLabels(true);
-		jSlider.setMajorTickSpacing(10);
-		jSlider.setMinorTickSpacing(5);
-		jSlider.setPaintTicks(true);
-		jSlider.setValue(50);
-		jSlider.addChangeListener(new ChangeListener() {
+		jSlider1.setPaintLabels(true);
+		jSlider1.setMajorTickSpacing(10);
+		jSlider1.setMinorTickSpacing(5);
+		jSlider1.setPaintTicks(true);
+		jSlider1.setValue(50);
+		jSlider1.addChangeListener(new ChangeListener() {
 
 			@Override
 			public void stateChanged(ChangeEvent arg0) {
-				stresslevel = jSlider.getValue();
+				stresslevel = jSlider1.getValue();
 			}
 		});
-		JSlider jSlider2 = new JSlider(0, 100, 50);
+		JSlider jSlider2 = new JSlider(0, 200, 50);
+		jSlider2.setPaintLabels(true);
 		jSlider2.setMajorTickSpacing(10);
 		jSlider2.setMinorTickSpacing(5);
 		jSlider2.setPaintTicks(true);
@@ -105,12 +93,75 @@ public class Popup extends JFrame implements ActionListener {
 
 			@Override
 			public void stateChanged(ChangeEvent arg0) {
-				int vitesse = jSlider2.getValue();
+				maxSpeed = jSlider2.getValue();
 			}
 		});
-		
 		JLabel label5 = new JLabel("Vitesse du vehicule :");
 		label5.setLocation(100, 50);
+		
+		JSlider jSlider3 = new JSlider(0, 10, 50);
+		jSlider3.setPaintLabels(true);
+		jSlider3.setMajorTickSpacing(10);
+		jSlider3.setMinorTickSpacing(5);
+		jSlider3.setPaintTicks(true);
+		jSlider3.setValue(5);
+		jSlider3.addChangeListener(new ChangeListener() {
+
+			@Override
+			public void stateChanged(ChangeEvent arg0) {
+				reactionTime = jSlider3.getValue();
+			}
+		});
+
+		JLabel label2 = new JLabel("Rentrez le trajet :");
+		JLabel label3 = new JLabel("Rentrez le comportement du véhicule :");
+		
+		label3.setLocation(50, 50);
+//		JComboBox<String> behaviorList = new JComboBox<>(behaviors);
+//		behaviorList.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				selected = (String) behaviorList.getSelectedItem();
+//				switch (selected){
+//				case "   " :
+//					jSlider1.setValue(50); 	//stresslevel
+//					jSlider2.setValue(50);  //speed
+//					jSlider2.setValue(50); // reactionTime 
+//				
+//				case "normal" : 
+//					jSlider1.setValue(25);	
+//					jSlider2.setValue(50);
+//					jSlider3.setValue(1);
+//				
+//				case "Enervé" : 
+//					jSlider1.setValue(75);	
+//					jSlider2.setValue(100);
+//					jSlider3.setValue(1);
+//					
+//				case "trés Enervé" : 
+//					jSlider1.setValue(100);	
+//					jSlider2.setValue(150);
+//					jSlider3.setValue(1);
+//				
+//				
+//				}
+//				
+//				
+//				
+//				
+//			}
+//		});
+//		behaviorList.setSelectedIndex(0);
+//		
+		
+		JTextArea text2 = new JTextArea("", 2, 10);
+		JScrollPane scroll = new JScrollPane(text2);
+		
+		JLabel label4 = new JLabel("Niveau de stress du conducteur :");
+		label4.setLocation(100, 50);
+		
+		JLabel label6 = new JLabel("distance de freinage :");
+		label6.setLocation(100, 50);
+		
 		JButton okButton = new JButton("Valider");
 		okButton.addActionListener(new ActionListener() {
 
@@ -136,9 +187,13 @@ public class Popup extends JFrame implements ActionListener {
 		panel1.add(label2);
 		panel1.add(scroll);
 		panel2.add(label3);
-		panel2.add(behaviorList);
+		//panel2.add(behaviorList);
 		panel2.add(label4);
-		panel2.add(jSlider);
+		panel2.add(jSlider1);
+		panel2.add(label5);
+		panel2.add(jSlider2);
+		panel2.add(label6);
+		panel2.add(jSlider3);
 		panel2.add(okButton);
 		panel2.add(fermer);
 
@@ -148,25 +203,9 @@ public class Popup extends JFrame implements ActionListener {
 
 	private void createVehicle(JTextArea NodeStart, JTextArea nodesString) {
 
-		int maxSpeed = 0;
-		int brakingDistance = 30;
 		ArrayList<Node> route = new ArrayList<Node>();
-		Driver driver = new Driver(stresslevel);
+		Driver driver = new Driver(stresslevel, maxSpeed, reactionTime) ;
 		
-		int width = 5;
-
-		if (selected.equals("normal")) {
-			maxSpeed = 50;
-		}
-		if (selected.equals("Enervé")) {
-			maxSpeed = 100;
-		}
-		if (selected.equals("trés Enervé")) {
-			maxSpeed = 150;
-		}
-
-		
-
 		nodes = nodesString.getText();
 
 		String[] NodeStringSplit = nodes.split("-");
@@ -218,8 +257,7 @@ public class Popup extends JFrame implements ActionListener {
 			}
 		}
 
-		Car vehicule = new Car(maxSpeed, brakingDistance, route,
-				driver, width);
+		Car vehicule = new Car(route, driver);
 		Main.Main.vehicules.add(vehicule);
 		System.out.println("Voiture crée : " + vehicule);
 	}

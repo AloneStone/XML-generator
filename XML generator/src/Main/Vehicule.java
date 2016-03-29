@@ -10,8 +10,6 @@ import java.util.ArrayList;
 public abstract class Vehicule {
 
 	public Integer lenth;
-	public Integer maxSpeed;
-	public Integer brakingDistance;
 	public ArrayList<Node> route;
 	public Driver driver;
 	public Integer width;
@@ -26,21 +24,7 @@ public abstract class Vehicule {
 		this.lenth = lenth;
 	}
 
-	public Integer getMaxSpeed() {
-		return maxSpeed;
-	}
 
-	public void setMaxSpeed(Integer maxSpeed) {
-		this.maxSpeed = maxSpeed;
-	}
-
-	public Integer getBrakingDistance() {
-		return brakingDistance;
-	}
-
-	public void setBrakingDistance(Integer brakingDistance) {
-		this.brakingDistance = brakingDistance;
-	}
 
 	public ArrayList<Node> getRoute() {
 		return route;
@@ -68,8 +52,7 @@ public abstract class Vehicule {
 
 	@Override
 	public String toString() {
-		return "MaxSpeed : " + maxSpeed + " Taille : " + width
-				+ " Braking Distance : " + brakingDistance
+		return  "Taille : "+ width
 				+ " Nombre de noeud à parcourir : " + route.size()
 				+ " Driver's stress" + driver.getStressLevel();
 	}
