@@ -5,11 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JSplitPane;
@@ -49,16 +50,17 @@ public class Popup extends JFrame implements ActionListener {
 	public JTextArea text1;
 	public JTextArea text2;
 	public JSlider jSlider2, jSlider1, jSlider3;
-	public JLabel label5; // vitesse 
-	public JLabel label6; //breakingdistance 
+	public JLabel label5; // vitesse
+	public JLabel label6; // breakingdistance
 	public int maxSpeed = 0;
-	
+
 	public int vitesse;
 	public int reactionTime;
 
 	public Popup(int mousePositionX, int mousePositionY, TypeVehicule type) {
 
-		this.behaviors = new String[] { "   ","normal", "Enervé", "trés Enervé" };
+		this.behaviors = new String[] { "   ", "normal", "Enervé",
+				"trés Enervé" };
 		this.setTitle("XML Generator");
 		this.setSize(300, 500);
 		this.setLocationRelativeTo(null);
@@ -66,20 +68,29 @@ public class Popup extends JFrame implements ActionListener {
 		Panel panel1 = new Panel();
 		Panel panel2 = new Panel();
 
+		JRadioButton normalBehaviour = new JRadioButton(" nomal ");
+		JRadioButton angryBehaviour = new JRadioButton(" énervé ");
+		JRadioButton veryAngryBehaviour = new JRadioButton(" très énervé ");
+		ButtonGroup behaviour = new ButtonGroup();
+		behaviour.add(normalBehaviour);
+		behaviour.add(angryBehaviour);
+		behaviour.add(veryAngryBehaviour);
+
 		this.setVisible(true);
 
 		splitPane1 = new JSplitPane(JSplitPane.VERTICAL_SPLIT, panel1, panel2);
 		splitPane1.setResizeWeight(0.2);
 		splitPane1.setOneTouchExpandable(false);
 		splitPane1.setDividerLocation(0.5);
-		
-JSlider jSlider1 = new JSlider(0, 100, 50);
-		
+
+		JSlider jSlider1 = new JSlider(0, 100, 50);
+
 		jSlider1.setPaintLabels(true);
 		jSlider1.setMajorTickSpacing(10);
 		jSlider1.setMinorTickSpacing(5);
 		jSlider1.setPaintTicks(true);
 		jSlider1.setValue(50);
+
 		jSlider1.addChangeListener(new ChangeListener() {
 
 			@Override
@@ -102,7 +113,7 @@ JSlider jSlider1 = new JSlider(0, 100, 50);
 		});
 		JLabel label5 = new JLabel("Vitesse du vehicule :");
 		label5.setLocation(100, 50);
-		
+
 		JSlider jSlider3 = new JSlider(0, 10, 50);
 		jSlider3.setPaintLabels(true);
 		jSlider3.setMajorTickSpacing(10);
@@ -119,60 +130,26 @@ JSlider jSlider1 = new JSlider(0, 100, 50);
 
 		JLabel label2 = new JLabel("Rentrez le trajet :");
 		JLabel label3 = new JLabel("Rentrez le comportement du véhicule :");
-		
+
 		label3.setLocation(50, 50);
-//		JComboBox<String> behaviorList = new JComboBox<>(behaviors);
-//		behaviorList.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				selected = (String) behaviorList.getSelectedItem();
-//				switch (selected){
-//				case "   " :
-//					jSlider1.setValue(50); 	//stresslevel
-//					jSlider2.setValue(50);  //speed
-//					jSlider2.setValue(50); // reactionTime 
-//				
-//				case "normal" : 
-//					jSlider1.setValue(25);	
-//					jSlider2.setValue(50);
-//					jSlider3.setValue(1);
-//				
-//				case "Enervé" : 
-//					jSlider1.setValue(75);	
-//					jSlider2.setValue(100);
-//					jSlider3.setValue(1);
-//					
-//				case "trés Enervé" : 
-//					jSlider1.setValue(100);	
-//					jSlider2.setValue(150);
-//					jSlider3.setValue(1);
-//				
-//				
-//				}
-//				
-//				
-//				
-//				
-//			}
-//		});
-//		behaviorList.setSelectedIndex(0);
-//		
-		
+
 		JTextArea text2 = new JTextArea("", 2, 10);
 		JScrollPane scroll = new JScrollPane(text2);
-		
+
 		JLabel label4 = new JLabel("Niveau de stress du conducteur :");
 		label4.setLocation(100, 50);
-		
+
 		JLabel label6 = new JLabel("distance de freinage :");
 		label6.setLocation(100, 50);
-		
+
 		JButton okButton = new JButton("Valider");
 		okButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				createVehicle(text2, type);
-				DrawPanel.points.add(new Shape(mousePositionX, mousePositionY, type));
+				DrawPanel.points.add(new Shape(mousePositionX, mousePositionY,
+						type));
 				dispose();
 			}
 
@@ -186,10 +163,30 @@ JSlider jSlider1 = new JSlider(0, 100, 50);
 			}
 		});
 
+		jSlider1.setValue(50); // stresslevel
+		jSlider2.setValue(50); // speed
+		jSlider3.setValue(50); // reactionTime
+
+		if (normalBehaviour.isValid()) {
+			jSlider1.setValue(25);
+			jSlider2.setValue(50);
+			jSlider3.setValue(1);
+		} else if (angryBehaviour.isValid()) {
+			jSlider1.setValue(75);
+			jSlider2.setValue(100);
+			jSlider3.setValue(1);
+		} else if (veryAngryBehaviour.isValid()) {
+			jSlider1.setValue(100);
+			jSlider2.setValue(150);
+			jSlider3.setValue(1);
+		}
+
 		panel1.add(label2);
 		panel1.add(scroll);
 		panel2.add(label3);
-		//panel2.add(behaviorList);
+		panel2.add(normalBehaviour);
+		panel2.add(angryBehaviour);
+		panel2.add(veryAngryBehaviour);
 		panel2.add(label4);
 		panel2.add(jSlider1);
 		panel2.add(label5);
@@ -200,14 +197,13 @@ JSlider jSlider1 = new JSlider(0, 100, 50);
 		panel2.add(fermer);
 
 		this.add(splitPane1);
-
 	}
 
 	private void createVehicle(JTextArea nodesString, TypeVehicule type) {
 
 		ArrayList<Node> route = new ArrayList<Node>();
-		Driver driver = new Driver(stresslevel, maxSpeed, reactionTime) ;
-		
+		Driver driver = new Driver(stresslevel, maxSpeed, reactionTime);
+
 		nodes = nodesString.getText();
 
 		String[] NodeStringSplit = nodes.split("-");
@@ -260,17 +256,17 @@ JSlider jSlider1 = new JSlider(0, 100, 50);
 		}
 
 		Vehicule vehicule = null;
-		
+
 		if (type == TypeVehicule.CAR)
 			vehicule = new Car(route, driver);
 		if (type == TypeVehicule.MOTO)
 			vehicule = new Moto(route, driver);
 		if (type == TypeVehicule.TRUCK)
 			vehicule = new Truck(route, driver);
-		
+
 		Main.Main.vehicules.add(vehicule);
 		System.out.println("Vehicule crée : " + vehicule);
-	
+
 	}
 
 	@Override
