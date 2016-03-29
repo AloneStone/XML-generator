@@ -1,17 +1,16 @@
 package xmlGenerator;
 
-import java.awt.Color;
 
 public class Shape extends Object {
-	/**
-	 * the color of the shape
-	 */
-	private Color color;
 
 	/**
 	 * The type of shape
 	 */
-	private Type type;
+	private TypeVehicule type;
+
+	private String path;
+	
+	private Position position;
 
 	/**
 	 * The constructor of the shape
@@ -23,10 +22,17 @@ public class Shape extends Object {
 	 * @param point
 	 *            point
 	 */
-	public Shape(int x, int y, Pointer point) {
-		super(new Position(x, y), point.getSize());
-
-		this.type = point.getType();
+	public Shape(int x, int y, TypeVehicule type) {
+		
+		this.position = new Position(x, y);
+		this.type = type;
+		
+		if (type == TypeVehicule.CAR)
+			this.path = "/xmlGenerator/GUI/car.png";
+		if (type == TypeVehicule.MOTO)
+			this.path = "/xmlGenerator/GUI/moto.png";
+		if (type == TypeVehicule.TRUCK)
+			this.path = "/xmlGenerator/GUI/truck.png";
 	}
 
 	/**
@@ -34,7 +40,7 @@ public class Shape extends Object {
 	 * 
 	 * @return type type
 	 */
-	public Type getType() {
+	public TypeVehicule getType() {
 		return this.type;
 	}
 
@@ -44,17 +50,20 @@ public class Shape extends Object {
 	 * @param type
 	 *            type
 	 */
-	public void setType(Type type) {
+	public void setType(TypeVehicule type) {
 		this.type = type;
 	}
 
+	public String getPath(){
+		return this.path;
+	}
 	/**
 	 * gets the abscissa position of the object
 	 * 
 	 * @return getObjectPosition().getPosX()
 	 */
 	public int getPosX() {
-		return this.getObjectPosition().getPosX();
+		return this.position.getPosX();
 	}
 
 	/**
@@ -63,15 +72,6 @@ public class Shape extends Object {
 	 * @return getObjectPosition().getPosY()
 	 */
 	public int getPosY() {
-		return this.getObjectPosition().getPosY();
-	}
-
-	/**
-	 * Gets the size of the object
-	 * 
-	 * @return getObjectDimension()
-	 */
-	public int getSize() {
-		return this.getObjectDimension();
+		return this.position.getPosY();
 	}
 }

@@ -58,6 +58,8 @@ public class MenuBar extends JMenuBar {
 	 * The menu item "truck"
 	 */
 	private JMenuItem truck;
+	
+	private JMenuItem moto;
 
 	/**
 	 * Represents if the image is already saved or not
@@ -107,6 +109,7 @@ public class MenuBar extends JMenuBar {
 		this.typeVehicule = new JMenu("choisir véhicule");
 		this.car = new JMenuItem("Car");
 		this.truck = new JMenuItem("Truck");
+		this.moto = new JMenuItem("Moto");
 
 	}
 
@@ -126,6 +129,8 @@ public class MenuBar extends JMenuBar {
 		car.addActionListener(MenuAction.car(this));
 
 		truck.addActionListener(MenuAction.truck(this));
+		
+		moto.addActionListener(MenuAction.moto(this));
 
 		generer.addActionListener(MenuAction.generer(this));
 
@@ -138,6 +143,7 @@ public class MenuBar extends JMenuBar {
 
 		typeVehicule.add(truck);
 		typeVehicule.add(car);
+		typeVehicule.add(moto);
 		edition.add(typeVehicule);
 
 		menuBar.add(file);

@@ -3,7 +3,6 @@ package xmlGenerator.GUI;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-import xmlGenerator.XmlGenerator;
 
 /**
  * where we create the GUI
@@ -14,10 +13,6 @@ public class GUIXmlGenerator implements Runnable {
 	 */
 	private JFrame window;
 
-	/**
-	 * the generator
-	 */
-	private XmlGenerator generator;
 
 	/**
 	 * the drawing panel
@@ -29,14 +24,6 @@ public class GUIXmlGenerator implements Runnable {
 	 */
 	private MenuBar menuBar;
 
-	/**
-	 * the constructor of the GUI
-	 * 
-	 * @param xml
-	 */
-	public GUIXmlGenerator(XmlGenerator xml) {
-		this.generator = xml;
-	}
 
 	/**
 	 * Creates the GUI
@@ -49,7 +36,7 @@ public class GUIXmlGenerator implements Runnable {
 
 		this.window.setTitle("XML-Generator");
 
-		this.drawPanel = new DrawPanel(null);
+		this.drawPanel = new DrawPanel();
 
 		this.menuBar = new MenuBar(this.drawPanel);
 		this.menuBar.initMenu(this.window);

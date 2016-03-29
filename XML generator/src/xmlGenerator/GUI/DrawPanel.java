@@ -8,17 +8,13 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-import xmlGenerator.Pointer;
 import xmlGenerator.Shape;
-import xmlGenerator.Type;
+import xmlGenerator.TypeVehicule;
 
 public class DrawPanel extends JPanel {
 
-	/**
-	 * The pointer used to draw on the DrawPanel
-	 */
-	public static Pointer point;
-
+	
+	private TypeVehicule currentType;
 	/**
 	 * The image selected in the JFileChooser (null if not)
 	 */
@@ -35,12 +31,11 @@ public class DrawPanel extends JPanel {
 	 * @param img
 	 *            the image selected in the JFileChooser
 	 */
-	public DrawPanel(Image img) {
-		this.point = new Pointer();
-		this.image = img;
+	public DrawPanel() {
 
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
+				
 				addVehicle(e);
 				repaint();
 			}
@@ -50,7 +45,9 @@ public class DrawPanel extends JPanel {
 
 	private void addVehicle(MouseEvent e) {
 
-		new Popup(e.getX(), e.getY());
+		Popup bouya = new Popup(e.getX(), e.getY(), currentType);
+		
+		
 	}
 
 	/**
@@ -69,12 +66,10 @@ public class DrawPanel extends JPanel {
 					getToolkit()
 							.getImage(
 									getClass().getResource(
-											"/xmlGenerator/GUI/car.png")),
+											shape.getPath())),
 					shape.getPosX(), shape.getPosY(), null);
-
+			}
 		}
-
-	}
 
 	/**
 	 * Erases the last PhotopShape painted
@@ -82,6 +77,7 @@ public class DrawPanel extends JPanel {
 	public void erase() {
 		if (this.points.size() != 0) {
 			this.points.remove(this.points.size() - 1);
+			Main.Main.vehicules.remove(Main.Main.vehicules.size()-1);
 		}
 		repaint();
 	}
@@ -91,8 +87,11 @@ public class DrawPanel extends JPanel {
 	 */
 	public void eraseAll() {
 		this.points = new ArrayList<Shape>();
+		Main.Main.vehicules.clear();
 		repaint();
 	}
+	
+	
 
 	/**
 	 * Sets the pointer's type with a given type
@@ -100,9 +99,8 @@ public class DrawPanel extends JPanel {
 	 * @param type
 	 *            type
 	 */
-	public void setPointerType(Type type) {
-		this.point.setShape(type);
-
+	public void setType(TypeVehicule type) {
+		currentType = type;
 	}
 
 	/**
@@ -113,16 +111,6 @@ public class DrawPanel extends JPanel {
 	 */
 	public void setImage(Image image) {
 		this.image = image;
-	}
-
-	/**
-	 * Sets the pointer's size with a given size
-	 * 
-	 * @param size
-	 *            size
-	 */
-	public void setPointerSize(int size) {
-		this.point.setSize(size + this.point.getSize());
 	}
 
 }
