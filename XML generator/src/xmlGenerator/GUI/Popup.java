@@ -1,5 +1,6 @@
 package xmlGenerator.GUI;
 
+import java.awt.Font;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -63,8 +64,10 @@ public class Popup extends JFrame implements ActionListener {
 	public JLabel labelForSpeed; 
 	
 	public JLabel labelReactionTime;
+	 
+	public JLabel introduction;
 	
-	public JScrollPane scrollOfJTextAreaPathOfvehicle; /////////////////////////////
+	public JScrollPane scrollOfJTextAreaPathOfvehicle; 
 	
 	public int maxSpeed = 0;
 
@@ -171,6 +174,14 @@ public class Popup extends JFrame implements ActionListener {
 		this.labelForSpeed = new JLabel("Vitesse du vehicule :");
 		
 		this.labelForSpeed.setLocation(100, 50);
+		
+		Font f = new Font("Serif", Font.PLAIN, 18);
+		
+		this.introduction = new JLabel("<html><body><b />Rentrez les paramètres du Vehicule</body></html>");
+		
+		this.introduction.setFont(f);
+		
+		this.introduction.setLocation(100, 50);
 
 		this.jSliderReactionTime = new JSlider(0, 100, 50);
 		
@@ -249,20 +260,35 @@ public class Popup extends JFrame implements ActionListener {
 			jSliderMaxSpeed.setValue(150);
 			jSliderReactionTime.setValue(1);
 		}
-
+		
+		this.panelTop.add(introduction);
+		
 		this.panelTop.add(labelPath);
+		
 		this.panelTop.add(scrollOfJTextAreaPathOfvehicle);
+		
 		this.panelBot.add(labelProfile);
+		
 		this.panelBot.add(normalBehaviour);
+		
 		this.panelBot.add(angryBehaviour);
+		
 		this.panelBot.add(veryAngryBehaviour);
+		
 		this.panelBot.add(labelStressLevel);
+		
 		this.panelBot.add(jSliderStressLevel);
+		
 		this.panelBot.add(labelForSpeed);
+		
 		this.panelBot.add(jSliderMaxSpeed);
+		
 		this.panelBot.add(labelReactionTime);
+		
 		this.panelBot.add(jSliderReactionTime);
+		
 		this.panelBot.add(okButton);
+		
 		this.panelBot.add(fermer);
 
 		this.add(splitPanePopUp);
