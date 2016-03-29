@@ -35,9 +35,10 @@ public class DrawPanel extends JPanel {
 
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				
-				addVehicle(e);
-				repaint();
+				if (currentType != null){
+					addVehicle(e);
+					repaint();
+				}
 			}
 		});
 
