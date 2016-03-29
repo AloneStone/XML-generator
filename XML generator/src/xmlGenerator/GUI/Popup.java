@@ -100,8 +100,8 @@ public class Popup extends JFrame implements ActionListener {
 		});
 		JSlider jSlider2 = new JSlider(0, 200, 50);
 		jSlider2.setPaintLabels(true);
-		jSlider2.setMajorTickSpacing(10);
-		jSlider2.setMinorTickSpacing(5);
+		jSlider2.setMajorTickSpacing(25);
+		jSlider2.setMinorTickSpacing(10);
 		jSlider2.setPaintTicks(true);
 		jSlider2.setValue(50);
 		jSlider2.addChangeListener(new ChangeListener() {
@@ -114,7 +114,7 @@ public class Popup extends JFrame implements ActionListener {
 		JLabel label5 = new JLabel("Vitesse du vehicule :");
 		label5.setLocation(100, 50);
 
-		JSlider jSlider3 = new JSlider(0, 10, 50);
+		JSlider jSlider3 = new JSlider(0, 100, 50);
 		jSlider3.setPaintLabels(true);
 		jSlider3.setMajorTickSpacing(10);
 		jSlider3.setMinorTickSpacing(5);
