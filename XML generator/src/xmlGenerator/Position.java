@@ -1,65 +1,65 @@
 package xmlGenerator;
 
-public class Position
-{
+public class Position {
 	/**
-	 * the object's position on the X axe  
+	 * the object's position on the X axe
 	 */
 	private int posX;
 
 	/**
-	 * the object's position on the Y axe  
+	 * the object's position on the Y axe
 	 */
 	private int posY;
 
 	/**
 	 * Creates a new position with a given posX and posY
-	 * @param posX the object's position on the X axe  
-	 * @param posY the object's position on the Y axe  
+	 * 
+	 * @param posX
+	 *            the object's position on the X axe
+	 * @param posY
+	 *            the object's position on the Y axe
 	 */
-	public Position(int posX, int posY)
-	{
-		this.posX =  posX;
+	public Position(int posX, int posY) {
+		this.posX = posX;
 		this.posY = posY;
 	}
 
 	/**
-	 * Returns the object's position on the X axe  
-	 * @return posX the object's position on the X axe  
+	 * Returns the object's position on the X axe
+	 * 
+	 * @return posX the object's position on the X axe
 	 */
-	public int getPosX()
-	{
+	public int getPosX() {
 		return posX;
 	}
 
 	/**
-	 * Sets the object's position on the X axe with a given coordinate 
-	 * @param posX the given X coordinate
+	 * Sets the object's position on the X axe with a given coordinate
+	 * 
+	 * @param posX
+	 *            the given X coordinate
 	 */
-	public void setPosX(int posX)
-	{
+	public void setPosX(int posX) {
 		this.posX = posX;
 	}
 
 	/**
-	 * Returns the object's position on the Y axe  
-	 * @return posY the object's position on the Y axe  
+	 * Returns the object's position on the Y axe
+	 * 
+	 * @return posY the object's position on the Y axe
 	 */
-	public int getPosY()
-	{
+	public int getPosY() {
 		return posY;
 	}
 
 	/**
-	 * Sets the object's position on the Y axe with a given coordinate 
-	 * @param posY the given Y coordinate
+	 * Sets the object's position on the Y axe with a given coordinate
+	 * 
+	 * @param posY
+	 *            the given Y coordinate
 	 */
-	public void setPosY(int posY)
-	{
+	public void setPosY(int posY) {
 		this.posY = posY;
-	}	
+	}
 
 }
-
-
-

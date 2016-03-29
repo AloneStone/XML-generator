@@ -1,50 +1,50 @@
 package Main;
 
 public class Arc {
-        
-        private int id ;
-        private Node nonestart;
-        private Node nonefinish;
-        private int vitessemax;
-        
-        public Arc(int id, Node nonestart, Node nonefinish, int vitessemax) {
 
-                this.id = id;
-                this.nonestart = nonestart;
-                this.nonefinish = nonefinish;
-                this.vitessemax = vitessemax;
-        }
+	private int id;
+	private Node nonestart;
+	private Node nonefinish;
+	private int vitessemax;
 
-        public int getId() {
-                return id;
-        }
+	public Arc(int id, Node nonestart, Node nonefinish, int vitessemax) {
 
-        public void setId(int id) {
-                this.id = id;
-        }
+		this.id = id;
+		this.nonestart = nonestart;
+		this.nonefinish = nonefinish;
+		this.vitessemax = vitessemax;
+	}
 
-        public Node getNonestart() {
-                return nonestart;
-        }
+	public int getId() {
+		return id;
+	}
 
-        public void setNonestart(Node nonestart) {
-                this.nonestart = nonestart;
-        }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-        public Node getNonefinish() {
-                return nonefinish;
-        }
+	public Node getNonestart() {
+		return nonestart;
+	}
 
-        public void setNonefinish(Node nonefinish) {
-                this.nonefinish = nonefinish;
-        }
+	public void setNonestart(Node nonestart) {
+		this.nonestart = nonestart;
+	}
 
-        public int getVitessemax() {
-                return vitessemax;
-        }
+	public Node getNonefinish() {
+		return nonefinish;
+	}
 
-        public void setVitessemax(int vitessemax) {
-                this.vitessemax = vitessemax;
-        }
+	public void setNonefinish(Node nonefinish) {
+		this.nonefinish = nonefinish;
+	}
+
+	public int getVitessemax() {
+		return vitessemax;
+	}
+
+	public void setVitessemax(int vitessemax) {
+		this.vitessemax = vitessemax;
+	}
 
 }

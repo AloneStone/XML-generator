@@ -4,22 +4,21 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 import xmlGenerator.XmlGenerator;
- 
+
 /**
- *  where we create the GUI
+ * where we create the GUI
  */
-public class GUIXmlGenerator implements Runnable
-{
+public class GUIXmlGenerator implements Runnable {
 	/**
 	 * The window of the application
 	 */
 	private JFrame window;
-	
+
 	/**
 	 * the generator
 	 */
 	private XmlGenerator generator;
-	
+
 	/**
 	 * the drawing panel
 	 */
@@ -29,30 +28,27 @@ public class GUIXmlGenerator implements Runnable
 	 * the MenuBar
 	 */
 	private MenuBar menuBar;
-	
-	
+
 	/**
 	 * the constructor of the GUI
-	 * @param xml 
+	 * 
+	 * @param xml
 	 */
-	public GUIXmlGenerator (XmlGenerator xml)
-	{
+	public GUIXmlGenerator(XmlGenerator xml) {
 		this.generator = xml;
 	}
-	
+
 	/**
 	 * Creates the GUI
 	 */
-	private void GUIxml()
-	{
+	private void GUIxml() {
 		this.window = new JFrame();
-		this.window.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		this.window.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		this.window.setLocationRelativeTo(null);
-		
-		
+
 		this.window.setTitle("XML-Generator");
-	
+
 		this.drawPanel = new DrawPanel(null);
 
 		this.menuBar = new MenuBar(this.drawPanel);
@@ -65,10 +61,8 @@ public class GUIXmlGenerator implements Runnable
 	 * The method run
 	 */
 	@Override
-	public void run()
-	{
+	public void run() {
 		this.GUIxml();
 	}
 
 }
-

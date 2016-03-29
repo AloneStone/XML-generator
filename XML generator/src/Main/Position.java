@@ -1,14 +1,15 @@
 package Main;
+
 /**
  * 
  * @author Bastien26
  *
  */
 public class Position {
-	
+
 	public Integer X;
-	public Integer Y;	
-	
+	public Integer Y;
+
 	public Position(Integer x, Integer y) {
 		X = x;
 		Y = y;
@@ -21,11 +22,11 @@ public class Position {
 	public Integer getY() {
 		return Y;
 	}
-	
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return ""+X+"/"+"Y";
+		return "" + X + "/" + "Y";
 	}
 
 }

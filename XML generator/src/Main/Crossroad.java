@@ -1,4 +1,5 @@
 package Main;
+
 import java.util.Collection;
 
 /**
@@ -6,9 +7,10 @@ import java.util.Collection;
  * @author Bastien26
  *
  */
-public class Crossroad extends Signaling{
+public class Crossroad extends Signaling {
 
-	public Crossroad(Integer id, Position position,Collection<Integer> idSignalingPosible) {
+	public Crossroad(Integer id, Position position,
+			Collection<Integer> idSignalingPosible) {
 		super(id, position, idSignalingPosible);
 
 	}

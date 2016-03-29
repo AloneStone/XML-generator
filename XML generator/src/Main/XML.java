@@ -16,7 +16,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.w3c.dom.Comment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -92,16 +91,16 @@ public class XML {
 
 				final Element route = document.createElement("route");
 				System.out.println(s.environement.node.size());
-				for (Node node : v.route){
+				for (Node node : v.route) {
 					final Element noeud = document.createElement("noeud");
 					noeud.setAttribute("id", Integer.toString(node.getId()));
 					route.appendChild(noeud);
 				}
-				
-				
+
 				final Element driver = document
 						.createElement("driverStressLevel");
-				driver.appendChild(document.createTextNode(v.getDriver().getStressLevel()));
+				driver.appendChild(document.createTextNode(v.getDriver()
+						.getStressLevel()));
 
 				final Element width = document.createElement("width");
 				width.appendChild(document.createTextNode(v.getWidth()
@@ -111,7 +110,7 @@ public class XML {
 				vehi.appendChild(maxSpeed);
 				vehi.appendChild(brakingDistance);
 				vehi.appendChild(route);
-				
+
 				vehi.appendChild(driver);
 				vehi.appendChild(width);
 

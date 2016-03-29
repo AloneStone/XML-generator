@@ -1,297 +1,108 @@
-package xmlGenerator.GUI; 
+package xmlGenerator.GUI;
 
-import java.awt.AWTException; 
 import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import Main.Main;
 import xmlGenerator.Type;
- 
-public class MenuAction
-{
-	
-	
 
+public class MenuAction {
 
-	
-	public static ActionListener openImage(final MenuBar menuBar)
-	{
-		return new ActionListener()
-		{
+	public static ActionListener openImage(final MenuBar menuBar) {
+		return new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e)
-			{
+			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileExplorer = new JFileChooser();
 				int result = fileExplorer.showOpenDialog(null);
-				if (result == JFileChooser.APPROVE_OPTION) 
-				{
+				if (result == JFileChooser.APPROVE_OPTION) {
 					Main.image = fileExplorer.getSelectedFile();
-					try 
-					{
-						Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+					try {
+						Dimension screenSize = Toolkit.getDefaultToolkit()
+								.getScreenSize();
 						double screenWidth = screenSize.getWidth();
 						double screenHeight = screenSize.getHeight();
-						if(ImageIO.read(Main.image).getWidth() > screenWidth || ImageIO.read(Main.image).getHeight() > screenHeight )
-						{
-							JOptionPane.showMessageDialog(null, "Image resolution is too big.");
-						}
-						else
-						{
-							menuBar.getDrawPanel().setImage(ImageIO.read(Main.image));
+						if (ImageIO.read(Main.image).getWidth() > screenWidth
+								|| ImageIO.read(Main.image).getHeight() > screenHeight) {
+							JOptionPane.showMessageDialog(null,
+									"Image resolution is too big.");
+						} else {
+							menuBar.getDrawPanel().setImage(
+									ImageIO.read(Main.image));
 							menuBar.getDrawPanel().repaint();
-							System.out.println(fileExplorer.getSelectedFile().getName());
+							System.out.println(fileExplorer.getSelectedFile()
+									.getName());
 						}
-					} 
-					catch (IOException ex) 
-					{
+					} catch (IOException ex) {
 						ex.printStackTrace();
 					}
 					return;
-				}								
+				}
 			}
 		};
 	}
-	
-	
+
 	/**
 	 * Erases the last pointer draw
-	 * @param menuBar menuBar
+	 * 
+	 * @param menuBar
+	 *            menuBar
 	 * @return actionListener
 	 */
-	public static ActionListener erase(final MenuBar menuBar)
-	{
-		return new ActionListener()
-		{
+	public static ActionListener erase(final MenuBar menuBar) {
+		return new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				menuBar.getDrawPanel().erase();				
+			public void actionPerformed(ActionEvent e) {
+				menuBar.getDrawPanel().erase();
 			}
 		};
 	}
-	
-	
+
 	/**
 	 * Erases all the pointers contained in the drawPanel
-	 * @param menuBar menubar
+	 * 
+	 * @param menuBar
+	 *            menubar
 	 * @return actionListener
 	 */
-	public static ActionListener eraseAll(final MenuBar menuBar)
-	{
-		return new ActionListener()
-		{
+	public static ActionListener eraseAll(final MenuBar menuBar) {
+		return new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e)
-			{
+			public void actionPerformed(ActionEvent e) {
 				menuBar.getDrawPanel().eraseAll();
 			}
 		};
 	}
-	
-	
-	
-	/**
-	 * Saves the image and all the pointers contained in the drawpanel
-	 * @param menuBar menubar
-	 * @return ActionListener
-	 */
-	public static ActionListener saveImage(final MenuBar menuBar)
-	{
-		return new ActionListener()
-		{
-			
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				JFileChooser directoryChooser = new JFileChooser();
-				directoryChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-				
-				if(menuBar.getImageAlreadySaved())
-				{
-					try
-					{
-						JOptionPane.showMessageDialog(null, "Saving in progress");
-						menuBar.setCurrentImage(new Robot().createScreenCapture(new Rectangle(menuBar.getDrawPanel().getLocationOnScreen().x, menuBar.getDrawPanel().getLocationOnScreen().y, menuBar.getDrawPanel().getWidth(), menuBar.getDrawPanel().getHeight())));
-						ImageIO.write(menuBar.getCurrentImage(), "PNG", new File(menuBar.getImagePath()+"/"+menuBar.getImageName()+".PNG"));
-						JOptionPane.showMessageDialog(null, "Image "+menuBar.getImageName()+".png saved !");
-					} 
-					catch (IOException e1)
-					{
-						e1.printStackTrace();
-					}
-					catch (AWTException e1)
-					{
-						e1.printStackTrace();
-					}
-					
-				} 
-				else
-				{
-					menuBar.setImageName(JOptionPane.showInputDialog(menuBar.getDrawPanel(),"Name of the image ?"));
-					
-					if(menuBar.getImageName() != null)
-					{
-						if(directoryChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
-						{
-							menuBar.setImagePath(directoryChooser.getSelectedFile().getPath());
-							try
-							{
-								try
-								{
-									menuBar.setCurrentImage(new Robot().createScreenCapture(new Rectangle(menuBar.getDrawPanel().getLocationOnScreen().x, menuBar.getDrawPanel().getLocationOnScreen().y, menuBar.getDrawPanel().getWidth(), menuBar.getDrawPanel().getHeight())));
-									ImageIO.write(menuBar.getCurrentImage(), "PNG", new File(menuBar.getImagePath()+"/"+menuBar.getImageName()+".PNG"));
-									JOptionPane.showMessageDialog(null, "Image "+menuBar.getImageName()+".png saved !");
-									menuBar.setImageAlreadySaved(true);
-								} 
-								catch (AWTException e1)
-								{
-									e1.printStackTrace();
-								}
-							} 
-							catch (IOException e1)
-							{
-								e1.printStackTrace();
-							}
-						}
-					}
-				}
-			}
-		};
-	}
-	
-	
-	/**
-	 * 
-	 * @param menuBar menubar
-	 * @return ActionListener
-	 */
-	public static ActionListener saveAsImage(final MenuBar menuBar)
-	{
-		return new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				JFileChooser directoryChooser = new JFileChooser();
-				directoryChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-				menuBar.setImageName(JOptionPane.showInputDialog(menuBar.getDrawPanel(),"Name of the image ?"));
-				
-				if(menuBar.getImageName() != null)
-				{
-					if(directoryChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
-					{
-						menuBar.setImagePath(directoryChooser.getSelectedFile().getPath());
-						try
-						{
-							try
-							{
-								menuBar.setCurrentImage(new Robot().createScreenCapture(new Rectangle(menuBar.getDrawPanel().getLocationOnScreen().x, menuBar.getDrawPanel().getLocationOnScreen().y, menuBar.getDrawPanel().getWidth(), menuBar.getDrawPanel().getHeight())));
-								ImageIO.write(menuBar.getCurrentImage(), "PNG", new File(menuBar.getImagePath()+"/"+menuBar.getImageName()+".PNG"));
-								JOptionPane.showMessageDialog(null, "Image "+menuBar.getImageName()+".png saved !");
-								menuBar.setImageAlreadySaved(true);
-							} 
-							catch (AWTException e1)
-							{
-								e1.printStackTrace();
-							}
-						} 
-						catch (IOException e1)
-						{
-							e1.printStackTrace();
-						}
-					}
-				}
-				
-			}
-		};
-	}
-	
-	
-	/**
-	 * Creates an image with a specific height and width and display it in the drawPanel
-	 * @param menuBar menubar
-	 * @param window window
-	 * @return ActionListener actionListener
-	 */
-	public static ActionListener createImage(final MenuBar menuBar, final JFrame window)
-	{
-		return new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				int height = Integer.parseInt(new JOptionPane().showInputDialog(null,"Which height do you want ?"));
-				int width = Integer.parseInt(new JOptionPane().showInputDialog(null,"Which width do you want ?"));
-				if(height <= 0 || width <= 0)
-				{
-					JOptionPane.showMessageDialog(null, "Invalid size");
-				}
-				else
-				{
-					menuBar.getDrawPanel().eraseAll();
-					window.setSize(width, height);
-					window.setResizable(false);
-				}
-			}
-		};
-	}
-	
-	
 
-	public static ActionListener car(final MenuBar menuBar)
-	{
-		return new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
+	public static ActionListener car(final MenuBar menuBar) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				menuBar.getDrawPanel().setPointerType(Type.CAR);
-				
 			}
-
-		
 		};
-		
 	}
-
 
 	public static ActionListener truck(MenuBar menuBar) {
-		return new ActionListener()
-		{
+		return new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				menuBar.getDrawPanel().setPointerType(Type.TRUCK);				
+			public void actionPerformed(ActionEvent e) {
+				menuBar.getDrawPanel().setPointerType(Type.TRUCK);
 			}
 		};
 	}
-	
 
 	public static ActionListener generer(MenuBar menuBar) {
-		return new ActionListener()
-		{
+		return new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e)
-			{
+			public void actionPerformed(ActionEvent e) {
 				Main.done();
 			}
 		};
 	}
-	
-	
-
-	
-
-	}
-
-
+}

@@ -20,7 +20,6 @@ import javax.swing.event.ChangeListener;
 import Main.Car;
 import Main.Driver;
 import Main.Node;
-import Main.Position;
 import xmlGenerator.Shape;
 
 /**
@@ -43,7 +42,6 @@ public class Popup extends JFrame implements ActionListener {
 	public String nodeStart;
 	public String nodes;
 
-	public JTextArea text1;
 	public JTextArea text2;
 
 	public Popup(int mousePositionX, int mousePositionY) {
@@ -63,7 +61,6 @@ public class Popup extends JFrame implements ActionListener {
 		splitPane1.setOneTouchExpandable(false);
 		splitPane1.setDividerLocation(0.5);
 
-		JLabel label = new JLabel("Rentrez le noeud de départ :");
 		JLabel label2 = new JLabel("Rentrez le trajet :");
 		JLabel label3 = new JLabel("Rentrez le comportement du véhicule :");
 		label3.setLocation(50, 50);
@@ -113,8 +110,6 @@ public class Popup extends JFrame implements ActionListener {
 			}
 		});
 
-		panel1.add(label);
-		panel1.add(text1);
 		panel1.add(label2);
 		panel1.add(text2);
 		panel2.add(label3);
@@ -128,13 +123,10 @@ public class Popup extends JFrame implements ActionListener {
 
 	}
 
-	
-
 	private void createVehicle(JTextArea NodeStart, JTextArea nodesString) {
 
 		int maxSpeed = 0;
 		int brakingDistance = 30;
-		Node startNode;
 		ArrayList<Node> route = new ArrayList<Node>();
 		Driver driver = new Driver(stresslevel);
 		int width = 5;
@@ -149,8 +141,7 @@ public class Popup extends JFrame implements ActionListener {
 			maxSpeed = 150;
 		}
 
-		startNode = Main.Main.getNodeNumber(Integer.parseInt(NodeStart
-				.getText()));
+		
 
 		nodes = nodesString.getText();
 
@@ -202,8 +193,9 @@ public class Popup extends JFrame implements ActionListener {
 
 			}
 		}
-		
-		Car vehicule = new Car(maxSpeed, brakingDistance, startNode, route, driver, width);
+
+		Car vehicule = new Car(maxSpeed, brakingDistance, route,
+				driver, width);
 		Main.Main.vehicules.add(vehicule);
 		System.out.println("Voiture crée : " + vehicule);
 	}

@@ -11,7 +11,7 @@ public class Moto extends Vehicule {
 
 	public final static int TRUCK_LENTH = 10;
 	public final static int TRUCK_WIDTH = 6;
-	
+
 	/**
 	 * 
 	 * @param maxS
@@ -20,15 +20,15 @@ public class Moto extends Vehicule {
 	 * @param ePosition
 	 * @param d
 	 * @param width
-	 * @param startNode 
-	 * @param route 
+	 * @param startNode
+	 * @param route
 	 */
-	public Moto(int maxS, int bd, Driver d ,int width, Node startNode, ArrayList<Node> route){
-		
+	public Moto(int maxS, int bd, Driver d, int width,
+			ArrayList<Node> route) {
+
 		this.lenth = TRUCK_LENTH;
 		this.maxSpeed = maxS;
 		this.brakingDistance = bd;
-		this.startNode = startNode;
 		this.route = route;
 		this.driver = d;
 		this.width = TRUCK_LENTH;
@@ -36,10 +36,8 @@ public class Moto extends Vehicule {
 
 	@Override
 	String getType() {
-		
+
 		return "Moto";
 	}
-	
-	
-	
+
 }

@@ -2,18 +2,17 @@ package Main;
 
 public class Node {
 	public int id;
-	public Position position;  
+	public Position position;
 
 	public Node(int i, Position position) {
 		this.position = position;
 		this.id = i;
-}
-	
+	}
 
 	public int getId() {
 		return id;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -29,7 +28,7 @@ public class Node {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return ""+id;
+		return "" + id;
 	}
 
 }
