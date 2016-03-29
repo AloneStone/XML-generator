@@ -10,6 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
@@ -41,8 +42,10 @@ public class Popup extends JFrame implements ActionListener {
 	public JPanel panel1, panel2;
 	public String nodeStart;
 	public String nodes;
-
+	public JTextArea text1;
 	public JTextArea text2;
+	public JSlider jSlider2, jSlider1;
+	public JLabel label5;
 
 	public Popup(int mousePositionX, int mousePositionY) {
 
@@ -71,11 +74,15 @@ public class Popup extends JFrame implements ActionListener {
 			}
 		});
 		behaviorList.setSelectedIndex(0);
-		JTextArea text1 = new JTextArea("", 2, 10);
+		//JTextArea text1 = new JTextArea("", 2, 10);
+		
 		JTextArea text2 = new JTextArea("", 2, 10);
+		JScrollPane scroll = new JScrollPane(text2);
+		
 		JLabel label4 = new JLabel("Niveau de stress du conducteur :");
 		label4.setLocation(100, 50);
 		JSlider jSlider = new JSlider(0, 100, 50);
+		
 		jSlider.setPaintLabels(true);
 		jSlider.setMajorTickSpacing(10);
 		jSlider.setMinorTickSpacing(5);
@@ -88,6 +95,13 @@ public class Popup extends JFrame implements ActionListener {
 				stresslevel = jSlider.getValue();
 			}
 		});
+		JSlider jSlider2 = new JSlider(0, 100, 50);
+		jSlider2.setMajorTickSpacing(10);
+		jSlider2.setMinorTickSpacing(5);
+		jSlider2.setPaintTicks(true);
+		jSlider2.setValue(50);
+		JLabel label5 = new JLabel("Vitesse du vehicule :");
+		label5.setLocation(100, 50);
 		JButton okButton = new JButton("Valider");
 		okButton.addActionListener(new ActionListener() {
 
@@ -111,7 +125,7 @@ public class Popup extends JFrame implements ActionListener {
 		});
 
 		panel1.add(label2);
-		panel1.add(text2);
+		panel1.add(scroll);
 		panel2.add(label3);
 		panel2.add(behaviorList);
 		panel2.add(label4);
