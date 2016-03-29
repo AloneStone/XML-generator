@@ -96,6 +96,7 @@ public class XML {
 					noeud.setAttribute("id", Integer.toString(node.getId()));
 					route.appendChild(noeud);
 				}
+				
 
 				final Element driver = document
 						.createElement("driverStressLevel");
