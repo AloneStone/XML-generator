@@ -22,6 +22,7 @@ import Main.Car;
 import Main.Driver;
 import Main.Node;
 import xmlGenerator.Shape;
+import xmlGenerator.TypeVehicule;
 
 /**
  * 
@@ -48,7 +49,7 @@ public class Popup extends JFrame implements ActionListener {
 	public JLabel label5;
 	public int vitesse;
 
-	public Popup(int mousePositionX, int mousePositionY) {
+	public Popup(int mousePositionX, int mousePositionY, TypeVehicule type) {
 
 		this.behaviors = new String[] { "normal", "Enervé", "trés Enervé" };
 		this.setTitle("XML Generator");
@@ -116,10 +117,8 @@ public class Popup extends JFrame implements ActionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DrawPanel.points.add(new Shape(mousePositionX
-						- (DrawPanel.point.getSize() / 2), mousePositionY
-						- (DrawPanel.point.getSize() / 2), DrawPanel.point));
 				createVehicle(text1, text2);
+				DrawPanel.points.add(new Shape(mousePositionX, mousePositionY, type));
 				dispose();
 			}
 

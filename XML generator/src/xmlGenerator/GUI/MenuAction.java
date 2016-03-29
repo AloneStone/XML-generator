@@ -11,7 +11,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import Main.Main;
-import xmlGenerator.Type;
+import xmlGenerator.TypeVehicule;
 
 public class MenuAction {
 
@@ -83,7 +83,7 @@ public class MenuAction {
 	public static ActionListener car(final MenuBar menuBar) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				menuBar.getDrawPanel().setPointerType(Type.CAR);
+				menuBar.getDrawPanel().setType(TypeVehicule.CAR);
 			}
 		};
 	}
@@ -92,11 +92,22 @@ public class MenuAction {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				menuBar.getDrawPanel().setPointerType(Type.TRUCK);
+				menuBar.getDrawPanel().setType(TypeVehicule.TRUCK);
 			}
 		};
 	}
 
+
+	public static ActionListener moto(MenuBar menuBar) {
+		return new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				menuBar.getDrawPanel().setType(TypeVehicule.MOTO);
+			}
+		};
+	}
+	
+	
 	public static ActionListener generer(MenuBar menuBar) {
 		return new ActionListener() {
 			@Override
