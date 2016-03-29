@@ -13,7 +13,7 @@ public class Car extends Vehicule {
 	public final static int CAR_WIDTH = 5;
 
 	public Car(ArrayList<Node> route, Driver d) {
-	;
+	
 	
 		this.route = route;
 		this.driver = d;

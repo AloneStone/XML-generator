@@ -81,13 +81,12 @@ public class XML {
 						.toString()));
 
 				final Element maxSpeed = document.createElement("maxSpeed");
-				maxSpeed.appendChild(document.createTextNode(v.getMaxSpeed()
-						.toString()));
+				maxSpeed.appendChild(document.createTextNode(Integer.toString(v.getDriver().getMaxSpeed())));
 
 				final Element brakingDistance = document
 						.createElement("brakingDistance");
-				brakingDistance.appendChild(document.createTextNode(v
-						.getBrakingDistance().toString()));
+				brakingDistance.appendChild(document.createTextNode(Integer.toString(v
+						.getDriver().getBrakingDistance())));
 
 				final Element route = document.createElement("route");
 				System.out.println(s.environement.node.size());

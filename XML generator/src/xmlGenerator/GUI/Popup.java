@@ -19,6 +19,9 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import Main.Car;
+import Main.Moto;
+import Main.Truck;
+import Main.Vehicule;
 import Main.Driver;
 import Main.Node;
 import xmlGenerator.Shape;
@@ -168,7 +171,7 @@ JSlider jSlider1 = new JSlider(0, 100, 50);
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				createVehicle(text1, text2);
+				createVehicle(text2, type);
 				DrawPanel.points.add(new Shape(mousePositionX, mousePositionY, type));
 				dispose();
 			}
@@ -200,7 +203,7 @@ JSlider jSlider1 = new JSlider(0, 100, 50);
 
 	}
 
-	private void createVehicle(JTextArea NodeStart, JTextArea nodesString) {
+	private void createVehicle(JTextArea nodesString, TypeVehicule type) {
 
 		ArrayList<Node> route = new ArrayList<Node>();
 		Driver driver = new Driver(stresslevel, maxSpeed, reactionTime) ;
@@ -256,9 +259,18 @@ JSlider jSlider1 = new JSlider(0, 100, 50);
 			}
 		}
 
-		Car vehicule = new Car(route, driver);
+		Vehicule vehicule = null;
+		
+		if (type == TypeVehicule.CAR)
+			vehicule = new Car(route, driver);
+		if (type == TypeVehicule.MOTO)
+			vehicule = new Moto(route, driver);
+		if (type == TypeVehicule.TRUCK)
+			vehicule = new Truck(route, driver);
+		
 		Main.Main.vehicules.add(vehicule);
-		System.out.println("Voiture crée : " + vehicule);
+		System.out.println("Vehicule crée : " + vehicule);
+	
 	}
 
 	@Override
