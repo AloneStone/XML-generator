@@ -9,25 +9,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import Main.Arc;
-import Main.Environement;
-import Main.Node;
-import Main.Signaling;
-import Main.Car;
-import Main.Driver;
-import Main.Environement;
-import Main.Position;
-import Main.Scenario;
-import Main.Vehicule;
-import Main.XML;
+import Main.Main;
 import xmlGenerator.Type;
  
 public class MenuAction
@@ -48,19 +36,20 @@ public class MenuAction
 				int result = fileExplorer.showOpenDialog(null);
 				if (result == JFileChooser.APPROVE_OPTION) 
 				{
-					File file = fileExplorer.getSelectedFile();
+					Main.image = fileExplorer.getSelectedFile();
 					try 
 					{
 						Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 						double screenWidth = screenSize.getWidth();
 						double screenHeight = screenSize.getHeight();
-						if(ImageIO.read(file).getWidth() > screenWidth || ImageIO.read(file).getHeight() > screenHeight )
+						if(ImageIO.read(Main.image).getWidth() > screenWidth || ImageIO.read(Main.image).getHeight() > screenHeight )
 						{
 							JOptionPane.showMessageDialog(null, "Image resolution is too big.");
 						}
 						else
 						{
-							menuBar.getDrawPanel().setImage(ImageIO.read(file));
+							menuBar.getDrawPanel().setImage(ImageIO.read(Main.image));
+							menuBar.getDrawPanel().repaint();
 							System.out.println(fileExplorer.getSelectedFile().getName());
 						}
 					} 
@@ -291,27 +280,10 @@ public class MenuAction
 	public static ActionListener generer(MenuBar menuBar) {
 		return new ActionListener()
 		{
-			
-			
-
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				
-				Collection<Signaling> signaling = null;
-				ArrayList<Node> node = null;
-				ArrayList<Arc> a = null;
-				
-				//Environement env = new Environement("./img/picture.png",signaling, node, a);
-		    	
-		    	
-		    	
-				
-				//Scenario s = new Scenario();
-		    	
-		    	//XML xml = new XML();
-		    	//xml.toXML(s);
-				//System.out.println("généré");				
+				Main.done();
 			}
 		};
 	}

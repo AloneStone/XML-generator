@@ -67,11 +67,6 @@ public class DrawPanel extends JPanel
 	private void addVehicle(MouseEvent e){
 		
 			new Popup(e.getX(), e.getY());
-	    	System.out.println("vehicule créé en "+e.getX()+" : "+e.getY());
-	    	for(Vehicule vhc: Main.Main.vehicules ){
-	    		System.out.println(vhc);
-	    	}
-
 	}
 	
 

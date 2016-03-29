@@ -1,5 +1,5 @@
 package Main;
-import java.util.Collection;
+import java.util.ArrayList;
 
 /**
  * 
@@ -10,9 +10,9 @@ public class Scenario {
 	
 
 	public Environement environement;
-	public Collection<Vehicule> vehicules;
+	public ArrayList<Vehicule> vehicules;
 	
-	public Scenario(Collection<Vehicule> v, Environement e){
+	public Scenario(ArrayList<Vehicule> v, Environement e){
 		this.vehicules = v;
 		this.environement = e;
 	}
@@ -21,7 +21,7 @@ public class Scenario {
 		return environement;
 	}
 
-	public Collection<Vehicule> getVehicules() {
+	public ArrayList<Vehicule> getVehicules() {
 		return vehicules;
 	}
 

@@ -8,11 +8,12 @@ public class Node {
 		this.position = position;
 		this.id = i;
 }
+	
 
 	public int getId() {
 		return id;
 	}
-
+	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -25,5 +26,10 @@ public class Node {
 		this.position = position;
 	}
 
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return ""+id;
+	}
 
 }

@@ -13,11 +13,9 @@ public abstract class Vehicule {
 	public Integer maxSpeed;
 	public Integer brakingDistance;
 	public Node startNode;
-	//public Node endNode;
 	public ArrayList<Node> route;
 	public Driver driver;
 	public Integer width;
-	//public Object getStartNode;
 	
 	
 	
@@ -72,6 +70,6 @@ public abstract class Vehicule {
 	
 	@Override
 	public String toString(){
-		return ""+maxSpeed;
+		return "MaxSpeed : "+maxSpeed+" Taille : "+width+" Braking Distance : "+brakingDistance+" Noeud de départ : "+startNode+" Nombre de noeud à parcourir : "+route.size()+" Driver's stress"+ driver.getStressLevel();
 	}
 }

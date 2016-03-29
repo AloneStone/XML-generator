@@ -45,8 +45,6 @@ public class Popup extends JFrame implements ActionListener {
 
 	public JTextArea text1;
 	public JTextArea text2;
-	private Node nodeStartUsing;
-	public ArrayList<Node> route;
 
 	public Popup(int mousePositionX, int mousePositionY) {
 
@@ -130,135 +128,88 @@ public class Popup extends JFrame implements ActionListener {
 
 	}
 
+	
+
 	private void createVehicle(JTextArea NodeStart, JTextArea nodesString) {
 
-		if (selected == "normal") {
-			Car v1 = new Car(50, 30, null, Main.Main.n,
-					new Driver(stresslevel), 5);
-			Main.Main.vehicules.add(v1);
+		int maxSpeed = 0;
+		int brakingDistance = 30;
+		Node startNode;
+		ArrayList<Node> route = new ArrayList<Node>();
+		Driver driver = new Driver(stresslevel);
+		int width = 5;
 
+		if (selected.equals("normal")) {
+			maxSpeed = 50;
 		}
-		if (selected == "Enervé") {
-			Car v2 = new Car(100, 30, null, Main.Main.n,
-					new Driver(stresslevel), 5);
-			Main.Main.vehicules.add(v2);
-
+		if (selected.equals("Enervé")) {
+			maxSpeed = 100;
+		}
+		if (selected.equals("trés Enervé")) {
+			maxSpeed = 150;
 		}
 
-		if (selected == "trés Enervé") {
-			Car v3 = new Car(150, 30, null, Main.Main.n,
-					new Driver(stresslevel), 5);
-			Main.Main.vehicules.add(v3);
+		startNode = Main.Main.getNodeNumber(Integer.parseInt(NodeStart
+				.getText()));
 
-		}
-		System.out.print(selected);
-		System.out.print("/");
-		System.out.print(stresslevel);
-		System.out.print("/");
-		System.out.print(NodeStart.getText());
-		System.out.print("/");
-		System.out.print(nodesString.getText());
+		nodes = nodesString.getText();
 
-		nodeStart = NodeStart.getText();
+		String[] NodeStringSplit = nodes.split("-");
 
-		switch (nodeStart) {
-		case "1":
-			nodeStartUsing = Main.Main.A;
-		case "2":
-			nodeStartUsing = Main.Main.B;
-		case "3":
-			nodeStartUsing = Main.Main.C;
-		case "4":
-			nodeStartUsing = Main.Main.D;
-		case "5":
-			nodeStartUsing = Main.Main.E;
+		for (int i = 0; i < NodeStringSplit.length; i++) {
 
-		case "6":
-			nodeStartUsing = Main.Main.F;
+			String nodeI = NodeStringSplit[i];
 
-		case "7":
-			nodeStartUsing = Main.Main.G;
+			if (nodeI.equals("1")) {
+				route.add(Main.Main.A);
+			}
 
-		case "8":
-			nodeStartUsing = Main.Main.H;
+			if (nodeI.equals("2")) {
+				route.add(Main.Main.B);
+			}
 
-		case "9":
-			nodeStartUsing = Main.Main.I;
+			if (nodeI.equals("3")) {
+				route.add(Main.Main.C);
+			}
 
-			nodes = nodesString.getText();
+			if (nodeI.equals("4")) {
+				route.add(Main.Main.D);
 
-			String[] NodeStringSplit = nodes.split("-");
-			int nodeNumber = NodeStringSplit.length;
-			System.out.print('\n');
-			System.out.println("Number of nodes : " + nodeNumber);
-			int i;
+			}
 
-			for (i = 0; i < nodeNumber; i++) {
+			if (nodeI.equals("5")) {
+				route.add(Main.Main.E);
 
-				ArrayList<Node> route = new ArrayList<Node>();
-				// System.out.println(NodeStringSplit[i]);
-				String nodeI = NodeStringSplit[i];
-				
-				 System.out.println(":"+nodeI+":");
-				 
-				if ( nodeI.equals("1")) {
-					 route.add(Main.Main.A);
-					 System.out.println(nodeI+ " ajouté au trajet");
+			}
 
-				}
+			if (nodeI.equals("6")) {
+				route.add(Main.Main.F);
 
-				if ( nodeI.equals("2")) {
-					route.add(Main.Main.B);
-					System.out.println(nodeI+ " ajouté au trajet");
-				}
+			}
 
-				if ( nodeI.equals("3")) {
-					route.add(Main.Main.C);
-					System.out.println(nodeI+ " ajouté au trajet");
-				}
+			if (nodeI.equals("7")) {
+				route.add(Main.Main.G);
 
-				if ( nodeI.equals("4")) {
-					route.add(Main.Main.D);
-					System.out.println(nodeI+ " ajouté au trajet");
+			}
 
-				}
+			if (nodeI.equals("8")) {
+				route.add(Main.Main.H);
 
-				if ( nodeI.equals("5")) {
-					 route.add(Main.Main.E);
-					 System.out.println(nodeI+ " ajouté au trajet");
+			}
 
-				}
-
-				if ( nodeI.equals("6")) {
-					route.add(Main.Main.F);
-					System.out.println(nodeI+ " ajouté au trajet");
-
-				}
-
-				if ( nodeI.equals("7")) {
-					route.add(Main.Main.G);
-					 System.out.println(nodeI+ " ajouté au trajet");
-
-				}
-
-				if ( nodeI.equals("8")) {
-					 route.add(Main.Main.H);
-					System.out.println(nodeI+ " ajouté au trajet");
-
-				}
-
-				if ( nodeI.equals("9")) {
-					 route.add(Main.Main.I);
-					 System.out.println(nodeI+ " ajouté au trajet");
-
-				}
+			if (nodeI.equals("9")) {
+				route.add(Main.Main.I);
 
 			}
 		}
+		
+		Car vehicule = new Car(maxSpeed, brakingDistance, startNode, route, driver, width);
+		Main.Main.vehicules.add(vehicule);
+		System.out.println("Voiture crée : " + vehicule);
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 
 	}

@@ -21,5 +21,11 @@ public class Position {
 	public Integer getY() {
 		return Y;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return ""+X+"/"+"Y";
+	}
 
 }
