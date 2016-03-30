@@ -28,15 +28,15 @@ public class Main {
 
 	public static ArrayList<Vehicule> vehicules;
 	public static ArrayList<Node> node;
-	public static ArrayList<Arc> arc;
+	public static ArrayList<Arc> arcs;
 	public static File image;
 
 	public static void main(final String[] args) {
 
 		vehicules = new ArrayList<Vehicule>();
 		node = new ArrayList<Node>();
-		arc = new ArrayList<Arc>();
-
+		arcs = new ArrayList<Arc>();
+		mapCreationTest();
 
 		XmlGenerator xmlgenerator = new XmlGenerator();
 		GUIXmlGenerator guiXmlGenerator = new GUIXmlGenerator();
@@ -46,19 +46,10 @@ public class Main {
 		System.out.println("lancement de l'application");
 
 	}
-
-	public static Node getNodeNumber(int id) {
-
-		for (Node node : node) {
-			if (node.getId() == id)
-				return node;
-		}
-		return null;
-	}
-
+	
 	public static void done() {
 
-		Environement environement = new Environement(image, node, arc);
+		Environement environement = new Environement(image, node, arcs);
 		Scenario scenar = new Scenario(vehicules, environement);
 		XML.toXML(scenar);
 	}
@@ -72,20 +63,20 @@ public class Main {
 		node.add(E = new Node(4, new Position(490, 260)));
 		node.add(F = new Node(5, new Position(940, 260)));
 		node.add(G = new Node(6, new Position(25, 500)));
-		node.add(H = new Node(7, new Position(490, 260)));
-		node.add(I = new Node(8, new Position(940, 260)));
+		node.add(H = new Node(7, new Position(490, 500)));
+		node.add(I = new Node(8, new Position(940, 500)));
 
-		arc.add(new Arc(1, getNodeNumber(1), getNodeNumber(2), 50));
-		arc.add(new Arc(2, getNodeNumber(2), getNodeNumber(3), 50));
-		arc.add(new Arc(3, getNodeNumber(1), getNodeNumber(4), 50));
-		arc.add(new Arc(4, getNodeNumber(2), getNodeNumber(5), 50));
-		arc.add(new Arc(5, getNodeNumber(3), getNodeNumber(6), 50));
-		arc.add(new Arc(6, getNodeNumber(4), getNodeNumber(5), 50));
-		arc.add(new Arc(7, getNodeNumber(5), getNodeNumber(6), 50));
-		arc.add(new Arc(8, getNodeNumber(4), getNodeNumber(7), 50));
-		arc.add(new Arc(9, getNodeNumber(5), getNodeNumber(8), 50));
-		arc.add(new Arc(10, getNodeNumber(6), getNodeNumber(7), 50));
-		arc.add(new Arc(11, getNodeNumber(7), getNodeNumber(8), 50));
-		arc.add(new Arc(12, getNodeNumber(8), getNodeNumber(9), 50));
+		arcs.add(new Arc(1, Node.getNodeNumber(1), Node.getNodeNumber(2), 500));
+		arcs.add(new Arc(2, Node.getNodeNumber(2), Node.getNodeNumber(3), 500));
+		arcs.add(new Arc(3, Node.getNodeNumber(1), Node.getNodeNumber(4), 500));
+		arcs.add(new Arc(4, Node.getNodeNumber(2), Node.getNodeNumber(5), 500));
+		arcs.add(new Arc(5, Node.getNodeNumber(3), Node.getNodeNumber(6), 500));
+		arcs.add(new Arc(6, Node.getNodeNumber(4), Node.getNodeNumber(5), 500));
+		arcs.add(new Arc(7, Node.getNodeNumber(5), Node.getNodeNumber(6), 500));
+		arcs.add(new Arc(8, Node.getNodeNumber(4), Node.getNodeNumber(7), 500));
+		arcs.add(new Arc(9, Node.getNodeNumber(5), Node.getNodeNumber(8), 500));
+		arcs.add(new Arc(10, Node.getNodeNumber(6), Node.getNodeNumber(7), 500));
+		arcs.add(new Arc(11, Node.getNodeNumber(7), Node.getNodeNumber(8), 500));
+		arcs.add(new Arc(12, Node.getNodeNumber(8), Node.getNodeNumber(9), 500));
 	}
 }

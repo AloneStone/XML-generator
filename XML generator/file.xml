@@ -2,18 +2,15 @@
 <Scenario>
   <Vehicule id="1" type="Car">
     <lenth>5</lenth>
-    <maxSpeed>50</maxSpeed>
-    <brakingDistance>30</brakingDistance>
+    <maxSpeed>0</maxSpeed>
     <route>
-      <noeud id="1"/>
-      <noeud id="2"/>
-      <noeud id="3"/>
-      <noeud id="4"/>
+      <noeud id="0"/>
     </route>
-    <driverStressLevel>50</driverStressLevel>
+    <driver>
+      <reactionTime>50</reactionTime>
+      <stressLevel>50</stressLevel>
+    </driver>
     <width>5</width>
   </Vehicule>
-  <Picture>
-    <file>G:\git\XML-generators\XML generator\img\city.bmp</file>
-  </Picture>
+  <Picture/>
 </Scenario>

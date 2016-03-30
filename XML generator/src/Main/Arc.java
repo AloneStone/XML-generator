@@ -1,20 +1,22 @@
 package Main;
 
+import java.util.ArrayList;
+
 public class Arc {
 
 	private int id;
-	private Node nonestart;
-	private Node nonefinish;
-	private int vitessemax;
+	private Node nodestart;
+	private Node nodefinish;
+	private int distance;
 
-	public Arc(int id, Node nonestart, Node nonefinish, int vitessemax) {
+	public Arc(int id, Node nodestart, Node nodefinish, int distance) {
 
 		this.id = id;
-		this.nonestart = nonestart;
-		this.nonefinish = nonefinish;
-		this.vitessemax = vitessemax;
+		this.nodestart = nodestart;
+		this.nodefinish = nodefinish;
+		this.distance = distance;
 	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -23,28 +25,28 @@ public class Arc {
 		this.id = id;
 	}
 
-	public Node getNonestart() {
-		return nonestart;
+	public Node getNodestart() {
+		return nodestart;
 	}
 
-	public void setNonestart(Node nonestart) {
-		this.nonestart = nonestart;
+	public void setNoDestart(Node nodestart) {
+		this.nodestart = nodestart;
 	}
 
-	public Node getNonefinish() {
-		return nonefinish;
+	public Node getNodefinish() {
+		return nodefinish;
 	}
 
-	public void setNonefinish(Node nonefinish) {
-		this.nonefinish = nonefinish;
+	public void setNodefinish(Node nodefinish) {
+		this.nodefinish = nodefinish;
 	}
 
-	public int getVitessemax() {
-		return vitessemax;
+	public int getDistance() {
+		return distance;
 	}
 
-	public void setVitessemax(int vitessemax) {
-		this.vitessemax = vitessemax;
+	public void setDistance(int distance) {
+		this.distance = distance;
 	}
 
 }

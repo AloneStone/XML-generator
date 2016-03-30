@@ -3,7 +3,6 @@ package xmlGenerator.GUI;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-
 /**
  * where we create the GUI
  */
@@ -13,17 +12,15 @@ public class GUIXmlGenerator implements Runnable {
 	 */
 	private JFrame window;
 
-
 	/**
 	 * the drawing panel
 	 */
-	private DrawPanel drawPanel;
+	public static DrawPanel drawPanel;
 
 	/**
 	 * the MenuBar
 	 */
 	private MenuBar menuBar;
-
 
 	/**
 	 * Creates the GUI

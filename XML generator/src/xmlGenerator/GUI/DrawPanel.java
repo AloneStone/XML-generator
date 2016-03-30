@@ -8,12 +8,14 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-import xmlGenerator.Shape;
+import xmlGenerator.VehiculeRepresentation;
 import xmlGenerator.TypeVehicule;
 
 public class DrawPanel extends JPanel {
 
 	
+	private static final long serialVersionUID = 1L;
+
 	private TypeVehicule currentType;
 	/**
 	 * The image selected in the JFileChooser (null if not)
@@ -23,7 +25,7 @@ public class DrawPanel extends JPanel {
 	/**
 	 * An array of Shape : represents all the Shape drew on the DrawPanel
 	 */
-	public static ArrayList<Shape> points = new ArrayList<Shape>();
+	public static ArrayList<VehiculeRepresentation> points = new ArrayList<VehiculeRepresentation>();
 
 	/**
 	 * Initializes the DrawPanel
@@ -35,20 +37,18 @@ public class DrawPanel extends JPanel {
 
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				if (currentType != null){
+				if (currentType != null) {
 					addVehicle(e);
 					repaint();
 				}
 			}
 		});
-
 	}
 
 	private void addVehicle(MouseEvent e) {
 
-		Popup bouya = new Popup(e.getX(), e.getY(), currentType);
-		
-		
+		new Popup(e.getX(), e.getY(), currentType);
+
 	}
 
 	/**
@@ -59,26 +59,25 @@ public class DrawPanel extends JPanel {
 	 */
 	public void paintComponent(Graphics g) {
 
+		super.paintComponent(g);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		g.drawImage(this.image, getX(), getY(), null);
 
-		for (Shape shape : this.points) {
+		for (VehiculeRepresentation shape : DrawPanel.points) {
 			g.drawImage(
-					getToolkit()
-							.getImage(
-									getClass().getResource(
-											shape.getPath())),
+					getToolkit().getImage(
+							getClass().getResource(shape.getPath())),
 					shape.getPosX(), shape.getPosY(), null);
-			}
 		}
+	}
 
 	/**
 	 * Erases the last PhotopShape painted
 	 */
 	public void erase() {
-		if (this.points.size() != 0) {
-			this.points.remove(this.points.size() - 1);
-			Main.Main.vehicules.remove(Main.Main.vehicules.size()-1);
+		if (DrawPanel.points.size() != 0) {
+			DrawPanel.points.remove(DrawPanel.points.size() - 1);
+			Main.Main.vehicules.remove(Main.Main.vehicules.size() - 1);
 		}
 		repaint();
 	}
@@ -87,12 +86,10 @@ public class DrawPanel extends JPanel {
 	 * Erases all the PhotopShapes painted
 	 */
 	public void eraseAll() {
-		this.points = new ArrayList<Shape>();
+		DrawPanel.points = new ArrayList<VehiculeRepresentation>();
 		Main.Main.vehicules.clear();
 		repaint();
 	}
-	
-	
 
 	/**
 	 * Sets the pointer's type with a given type
@@ -113,5 +110,8 @@ public class DrawPanel extends JPanel {
 	public void setImage(Image image) {
 		this.image = image;
 	}
+	
+	
+
 
 }

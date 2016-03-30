@@ -97,7 +97,6 @@ public class MenuAction {
 		};
 	}
 
-
 	public static ActionListener moto(MenuBar menuBar) {
 		return new ActionListener() {
 			@Override
@@ -106,8 +105,7 @@ public class MenuAction {
 			}
 		};
 	}
-	
-	
+
 	public static ActionListener generer(MenuBar menuBar) {
 		return new ActionListener() {
 			@Override

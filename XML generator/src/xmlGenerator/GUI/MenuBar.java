@@ -1,6 +1,5 @@
 package xmlGenerator.GUI;
 
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 
@@ -8,9 +7,12 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.KeyStroke;
 
 public class MenuBar extends JMenuBar {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * The menubar
 	 */
@@ -24,11 +26,7 @@ public class MenuBar extends JMenuBar {
 	 */
 	private JMenuItem openImage;
 	
-	/**
-	 * The menu item "Quit"
-	 */
-	private JMenuItem quit;
-
+	
 	private JMenuItem generer;
 
 	/**
@@ -49,7 +47,6 @@ public class MenuBar extends JMenuBar {
 	 */
 	private JMenu typeVehicule;
 
-	private JMenu generation;
 	/**
 	 * The menu item "Car"
 	 */
@@ -97,13 +94,12 @@ public class MenuBar extends JMenuBar {
 
 		this.file = new JMenu("File");
 		this.openImage = new JMenuItem("Open image");
-		this.quit = new JMenuItem("Quit");
 
 		this.edition = new JMenu("Edition");
 		this.erase = new JMenuItem("Erase");
 		this.eraseAll = new JMenuItem("Erase all");
 
-		this.generation = new JMenu("Generation XML");
+		new JMenu("Generation XML");
 		this.generer = new JMenuItem("générer");
 
 		this.typeVehicule = new JMenu("choisir véhicule");
@@ -138,7 +134,6 @@ public class MenuBar extends JMenuBar {
 		file.add(erase);
 		file.add(eraseAll);
 		file.addSeparator();
-		file.add(quit);
 		file.add(generer);
 
 		typeVehicule.add(truck);

@@ -3,7 +3,6 @@ package Main;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -82,11 +81,8 @@ public class XML {
 
 				final Element maxSpeed = document.createElement("maxSpeed");
 				maxSpeed.appendChild(document.createTextNode(Integer.toString(v.getDriver().getMaxSpeed())));
-
-				final Element brakingDistance = document
-						.createElement("brakingDistance");
-				brakingDistance.appendChild(document.createTextNode(Integer.toString(v
-						.getDriver().getBrakingDistance())));
+				
+				
 
 				final Element route = document.createElement("route");
 				System.out.println(s.environement.node.size());
@@ -99,20 +95,25 @@ public class XML {
 				
 
 				final Element driver = document
-						.createElement("driverStressLevel");
-				driver.appendChild(document.createTextNode(v.getDriver()
-						.getStressLevel()));
-
+						.createElement("driver");
+				final Element brakingDistance = document
+										.createElement("reactionTime");
+								brakingDistance.appendChild(document.createTextNode(Integer.toString(v
+										.getDriver().getBrakingDistance())));
+				final Element stressLevel = document.createElement("stressLevel");
+				stressLevel.appendChild(document.createTextNode(v.getDriver().getStressLevel()));
+				
+							
 				final Element width = document.createElement("width");
 				width.appendChild(document.createTextNode(v.getWidth()
 						.toString()));
 
 				vehi.appendChild(lenth);
 				vehi.appendChild(maxSpeed);
-				vehi.appendChild(brakingDistance);
 				vehi.appendChild(route);
-
 				vehi.appendChild(driver);
+				driver.appendChild(brakingDistance);
+				driver.appendChild(stressLevel);
 				vehi.appendChild(width);
 
 				compteurId++;
@@ -126,9 +127,11 @@ public class XML {
 			racine.appendChild(pic);
 
 			final Element picture = document.createElement("file");
-			picture.appendChild(document.createTextNode(s.environement.picture
-					.getAbsolutePath()));
-			pic.appendChild(picture);
+			if (s.environement.picture != null){
+				picture.appendChild(document.createTextNode(s.environement.picture
+						.getAbsolutePath()));
+				pic.appendChild(picture);
+			}
 
 			if (s.environement.signaling != null) {
 				for (Signaling si : signaling) {

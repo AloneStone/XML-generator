@@ -37,5 +37,6 @@ public class Moto extends Vehicule {
 
 		return "Moto";
 	}
+	
 
 }

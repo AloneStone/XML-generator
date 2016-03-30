@@ -1,7 +1,7 @@
 package xmlGenerator;
 
 
-public class Shape extends Object {
+public class VehiculeRepresentation extends Object {
 
 	/**
 	 * The type of shape
@@ -22,7 +22,7 @@ public class Shape extends Object {
 	 * @param point
 	 *            point
 	 */
-	public Shape(int x, int y, TypeVehicule type) {
+	public VehiculeRepresentation(int x, int y, TypeVehicule type) {
 		
 		this.position = new Position(x, y);
 		this.type = type;
