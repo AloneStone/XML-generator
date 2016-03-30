@@ -37,7 +37,7 @@ public class Main {
 		node = new ArrayList<Node>();
 		arc = new ArrayList<Arc>();
 
-		mapCreationTest();
+
 		XmlGenerator xmlgenerator = new XmlGenerator();
 		GUIXmlGenerator guiXmlGenerator = new GUIXmlGenerator();
 		xmlgenerator.GUIAssociation(guiXmlGenerator);
