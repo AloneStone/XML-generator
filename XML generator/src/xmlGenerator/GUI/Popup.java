@@ -227,6 +227,7 @@ public class Popup extends JFrame implements ActionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				GUIXmlGenerator.drawPanel.repaint();
 				createVehicle(JTextAreaPathOfvehicle, type);
 				GUIXmlGenerator.drawPanel.repaint();
 				dispose();
@@ -328,11 +329,13 @@ public class Popup extends JFrame implements ActionListener {
 		nodes = nodesString.getText();
 
 		if (nodes.length() != 0) {
-			
 			String[] NodeStringSplit = nodes.split("-");
-			Node firstNode = Node.getNodeNumber(Integer
-					.parseInt(NodeStringSplit[0]));
+
+			Node firstNode = Node.getNodeNumber(Integer.parseInt(NodeStringSplit[0]));
+
+			
 			for (int i = 0; i < NodeStringSplit.length; i++) {
+				
 				String nodeI = NodeStringSplit[i];
 				if (!(Integer.parseInt(nodeI) < Main.Main.node.size()))
 					return;
